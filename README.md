@@ -1,5 +1,7 @@
 # ZenTao MCP Server
 
+本 fork 提供 [REST v1 完整接口兼容](docs/rest-v1.md)，覆盖官方手册 97 个接口，保留上游 v2 模式。只读配置使用 `config.v1.example.yaml`；完整业务操作使用 `config.v1.full.example.yaml`。登录由独立本地工具处理。
+
 基于 OpenAPI 规范自动生成 MCP (Model Context Protocol) 工具服务。
 
 ## 一：简介
@@ -151,3 +153,7 @@ curl -X POST "${ZENTAO_DOMAIN}/api.php/v2/user/login" \
 MIT License
 
 本项目在 [openapi-mcp-server](https://github.com/merzzzl/openapi-mcp-server) 的基础上进行修改和扩展，原项目及本项目均依据 MIT 许可证发布。
+
+## Personal read-only aggregate queries
+
+ZenTao REST v1 schemas support authenticated [monthly worklogs](docs/monthly-worklogs.md) and [historical task/Bug queries](docs/history-queries.md). Monthly reports are disabled unless a server-owned endpoint is configured. Historical queries require explicit visible execution/product scope; identity, read-only operation checks and partial-evidence markers remain enforced.

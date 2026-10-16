@@ -1,0 +1,13 @@
+# All REST v1 reads. Use config.v1.full.example.yaml to enable business writes.
+port: '127.0.0.1:9090'
+enable_toon: false
+telemetry:
+  endpoint: ''
+servers:
+  - name: zentao
+    schema_url: docs/zentao-v1-readonly.json
+    base_url: https://zentao.example.com/zentao/api.php/v1
+    allow:
+      - methods: [GET]
+        regex: '.*'
+    block: []

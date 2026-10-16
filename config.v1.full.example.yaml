@@ -1,0 +1,15 @@
+# Full business API profile. Token acquisition stays in scripts/login-v1.py.
+port: '127.0.0.1:9090'
+enable_toon: false
+telemetry:
+  endpoint: ''
+servers:
+  - name: zentao
+    schema_url: docs/zentao-v1.json
+    base_url: https://zentao.example.com/zentao/api.php/v1
+    allow:
+      - methods: [GET, POST, PUT, DELETE]
+        regex: '.*'
+    block:
+      - methods: [POST]
+        regex: '^/tokens$'

@@ -8,6 +8,7 @@ import (
 	"regexp"
 
 	"github.com/merzzzl/openapi-mcp-server/internal/models"
+	"github.com/merzzzl/openapi-mcp-server/internal/service/tool"
 	"gopkg.in/yaml.v3"
 )
 
@@ -24,11 +25,12 @@ type MatchRule struct {
 }
 
 type ServerConfig struct {
-	Name      string      `yaml:"name"`
-	SchemaURL string      `yaml:"schema_url"`
-	BaseURL   string      `yaml:"base_url"`
-	Allow     []MatchRule `yaml:"allow"`
-	Block     []MatchRule `yaml:"block"`
+	MonthlyReport tool.MonthlyReportConfig `yaml:"monthly_report"`
+	Name          string                   `yaml:"name"`
+	SchemaURL     string                   `yaml:"schema_url"`
+	BaseURL       string                   `yaml:"base_url"`
+	Allow         []MatchRule              `yaml:"allow"`
+	Block         []MatchRule              `yaml:"block"`
 }
 
 const serviceName = "openapi-mcp-server"

@@ -1,0 +1,3733 @@
+{
+  "source": "https://www.zentao.net/book/api/956.html",
+  "retrieved": "2026-10-16",
+  "routeSource": "https://github.com/easysoft/zentaopms/blob/d5bfff8c91cea48018275381e0a127ed6fa5c79f/config/apiv1.php",
+  "endpoints": [
+    {
+      "number": "2.2.1",
+      "module": "Token",
+      "title": "获取Token",
+      "method": "POST",
+      "path": "/tokens",
+      "url": "https://www.zentao.net/book/api/664.html",
+      "sha256": "0cfd96dc419b4d9a90af128b659a92bd18a0f30747e495441c412f63ec0e8c50",
+      "body": [
+        [
+          [
+            "account",
+            "string",
+            "是",
+            "登录名"
+          ],
+          [
+            "password",
+            "string",
+            "是",
+            "密码"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "account": "admin",
+          "password": "123456"
+        }
+      ]
+    },
+    {
+      "number": "2.3.1",
+      "module": "部门",
+      "title": "获取部门列表",
+      "method": "GET",
+      "path": "/departments",
+      "url": "https://www.zentao.net/book/api/964.html",
+      "sha256": "1b26ab16e23416dadff68ac3d01fe09fb4841ee402303a11e34509468d5e1797",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.3.2",
+      "module": "部门",
+      "title": "获取部门详情",
+      "method": "GET",
+      "path": "/departments/id",
+      "url": "https://www.zentao.net/book/api/965.html",
+      "sha256": "5a65d83e1ab56c92c99097e591b6f6fe7190f2f0f210aef67372a7f9f994b4f4",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.4.1",
+      "module": "用户",
+      "title": "获取我的个人信息",
+      "method": "GET",
+      "path": "/user",
+      "url": "https://www.zentao.net/book/api/665.html",
+      "sha256": "ca999184967a26e710644199d9ac38c784be6b60920ec8d157d52da2f51632e3",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.4.2",
+      "module": "用户",
+      "title": "获取用户列表",
+      "method": "GET",
+      "path": "/users",
+      "url": "https://www.zentao.net/book/api/666.html",
+      "sha256": "de27c67f3ec7528f50da18d42fc068f03bb464580a85cf7e3c33cc8e573ba435",
+      "body": [],
+      "query": [
+        [
+          [
+            "browse",
+            "string",
+            "否",
+            "人员类型，默认为 inside（内部人员），可选 inside outside（外部人员），如果填入了其他的内容（比如空）查询所有用户"
+          ],
+          [
+            "page",
+            "string",
+            "否",
+            "当前页数"
+          ],
+          [
+            "limit",
+            "string",
+            "否",
+            "每页用户数"
+          ]
+        ]
+      ],
+      "examples": []
+    },
+    {
+      "number": "2.4.3",
+      "module": "用户",
+      "title": "获取用户信息",
+      "method": "GET",
+      "path": "/users/id",
+      "url": "https://www.zentao.net/book/api/667.html",
+      "sha256": "b7771b0d00c70be1d587d416d389bb17c241179c5f71ed11bf9cc3c5c91ab0bb",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.4.4",
+      "module": "用户",
+      "title": "修改用户信息",
+      "method": "PUT",
+      "path": "/users/id",
+      "url": "https://www.zentao.net/book/api/668.html",
+      "sha256": "ba78686ba35fa1af641164dafa792666a35af738a9b3df6b3fd607cae7600764",
+      "body": [
+        [
+          [
+            "dept",
+            "int",
+            "否",
+            "所属部门"
+          ],
+          [
+            "role",
+            "string",
+            "否",
+            "角色"
+          ],
+          [
+            "mobile",
+            "string",
+            "否",
+            "手机号"
+          ],
+          [
+            "realname",
+            "string",
+            "否",
+            "真实姓名"
+          ],
+          [
+            "email",
+            "string",
+            "否",
+            "邮箱"
+          ],
+          [
+            "phone",
+            "string",
+            "否",
+            "电话号码"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "realname": "管理员"
+        }
+      ]
+    },
+    {
+      "number": "2.4.5",
+      "module": "用户",
+      "title": "删除用户",
+      "method": "DELETE",
+      "path": "/users/id",
+      "url": "https://www.zentao.net/book/api/669.html",
+      "sha256": "1732925830a0bef8d4074b666e1a8921755b75a7b0ede3f4d711e2a2547993ab",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.4.6",
+      "module": "用户",
+      "title": "创建用户",
+      "method": "POST",
+      "path": "/users",
+      "url": "https://www.zentao.net/book/api/838.html",
+      "sha256": "779573611cb6344efe82f06de1b612b5ddc34f53765913daf97eddf450f48cdf",
+      "body": [
+        [
+          [
+            "account",
+            "string",
+            "是",
+            "账号"
+          ],
+          [
+            "password",
+            "string",
+            "是",
+            "密码"
+          ],
+          [
+            "realname",
+            "string",
+            "否",
+            "真实姓名"
+          ],
+          [
+            "visions",
+            "array",
+            "否",
+            "界面 ['rnd', 'lite']，(综合研发界面 rnd, 迅捷界面 lite)。默认是rnd"
+          ],
+          [
+            "role",
+            "string",
+            "否",
+            "职位， 可以在 'dev', 'qa', 'pm', 'po', 'td', 'pd', 'qd', 'top', 'others' 中选 ，(研发dev，测试qa，项目经理pm，产品经理po，研发主管td，产品主管pd，测试主管qd，高层管理top，其他others)"
+          ],
+          [
+            "group",
+            "string",
+            "否",
+            "权限分组，以英文逗号分隔的字符串，如 '2,3,4'，只有一个权限时填写字符串即可，如 '2'，权限分组列表在 后台-人员管理-权限 中查看，填写分组的编号即可"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.5.1",
+      "module": "项目集",
+      "title": "获取项目集列表",
+      "method": "GET",
+      "path": "/programs",
+      "url": "https://www.zentao.net/book/api/670.html",
+      "sha256": "9ad5cc362dbba5c68cfc87e30e6f76ff143f522c195409c6b9cf6216042f2343",
+      "body": [],
+      "query": [
+        [
+          [
+            "order",
+            "String",
+            "",
+            "排序，默认order_asc；排序字段+下划线+asc/desc"
+          ]
+        ]
+      ],
+      "examples": []
+    },
+    {
+      "number": "2.5.2",
+      "module": "项目集",
+      "title": "修改项目集",
+      "method": "PUT",
+      "path": "/programs/id",
+      "url": "https://www.zentao.net/book/api/671.html",
+      "sha256": "9c4e4f70021c670989591fdf3139dd609188d55375eb98160409c4df79092965",
+      "body": [
+        [
+          [
+            "name",
+            "string",
+            "否",
+            "项目名称"
+          ],
+          [
+            "parent",
+            "string",
+            "否",
+            "父项目集，0表示没有父项目集"
+          ],
+          [
+            "PM",
+            "string",
+            "否",
+            "项目负责人"
+          ],
+          [
+            "budget",
+            "int",
+            "否",
+            "预算金额"
+          ],
+          [
+            "budgetUnit",
+            "string",
+            "否",
+            "预算币种(CNY | USD)"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "项目集描述"
+          ],
+          [
+            "begin",
+            "date",
+            "否",
+            "预计开始日期"
+          ],
+          [
+            "end",
+            "date",
+            "否",
+            "预计结束日期"
+          ],
+          [
+            "acl",
+            "string",
+            "否",
+            "访问控制(open 公开 | private 私有)"
+          ],
+          [
+            "whitelist",
+            "array",
+            "否",
+            "白名单"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "name": "项目集",
+          "PM": "admin"
+        }
+      ]
+    },
+    {
+      "number": "2.5.3",
+      "module": "项目集",
+      "title": "获取项目集详情",
+      "method": "GET",
+      "path": "/programs/id",
+      "url": "https://www.zentao.net/book/api/672.html",
+      "sha256": "79a0eb2643b54f925c748f4af09c69fe26e1ecd50ab3ca32acf3bb65994d7d8c",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.5.4",
+      "module": "项目集",
+      "title": "删除项目集",
+      "method": "DELETE",
+      "path": "/programs/id",
+      "url": "https://www.zentao.net/book/api/673.html",
+      "sha256": "b0fb8eddd1a06e9fcc6a1c69043e54fce3b14bff09688a4754ad208ef772cdd7",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.5.5",
+      "module": "项目集",
+      "title": "创建项目集",
+      "method": "POST",
+      "path": "/programs",
+      "url": "https://www.zentao.net/book/api/674.html",
+      "sha256": "0ca197c70b55f2e8acaa7f60ca964c156306112c8edab3014902a0f4f2d139b2",
+      "body": [
+        [
+          [
+            "name",
+            "string",
+            "否",
+            "项目名称"
+          ],
+          [
+            "parent",
+            "string",
+            "否",
+            "父项目集，0表示没有父项目集"
+          ],
+          [
+            "PM",
+            "string",
+            "否",
+            "项目负责人"
+          ],
+          [
+            "budget",
+            "int",
+            "否",
+            "预算金额"
+          ],
+          [
+            "budgetUnit",
+            "string",
+            "否",
+            "预算币种(CNY | USD)"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "项目集描述"
+          ],
+          [
+            "begin",
+            "date",
+            "否",
+            "预计开始日期"
+          ],
+          [
+            "end",
+            "date",
+            "否",
+            "预计结束日期"
+          ],
+          [
+            "acl",
+            "string",
+            "否",
+            "访问控制(open 公开 | private 私有)"
+          ],
+          [
+            "whitelist",
+            "array",
+            "否",
+            "白名单，只有acl = private才生效"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.6.1",
+      "module": "产品",
+      "title": "获取产品列表",
+      "method": "GET",
+      "path": "/products",
+      "url": "https://www.zentao.net/book/api/675.html",
+      "sha256": "b5bfbf84633d882690893f2e643003b0cc3bc5638ede59d5def4ba34e366fbcd",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.6.2",
+      "module": "产品",
+      "title": "创建产品",
+      "method": "POST",
+      "path": "/products",
+      "url": "https://www.zentao.net/book/api/676.html",
+      "sha256": "3ff2a440b354ffd03c39c2c9abd69c13abb6bd07d54bc07a7d79e6e6ca974354",
+      "body": [
+        [
+          [
+            "name",
+            "string",
+            "是",
+            "产品名称"
+          ],
+          [
+            "program",
+            "int",
+            "是",
+            "所属项目集"
+          ],
+          [
+            "code",
+            "int",
+            "是",
+            "产品代号"
+          ],
+          [
+            "line",
+            "int",
+            "否",
+            "所属产品线"
+          ],
+          [
+            "PO",
+            "",
+            "否",
+            "产品负责人"
+          ],
+          [
+            "QD",
+            "",
+            "否",
+            "测试负责人"
+          ],
+          [
+            "RD",
+            "",
+            "否",
+            "发布负责人"
+          ],
+          [
+            "type",
+            "string",
+            "否",
+            "产品类型(normal 正常 | branch 多分支 | )"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "产品描述"
+          ],
+          [
+            "acl",
+            "string",
+            "否",
+            "访问控制（open 公开 | private 私有）"
+          ],
+          [
+            "whitelist",
+            "array",
+            "否",
+            "白名单"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "name": "测试产品",
+          "code": "test",
+          "program": 1
+        }
+      ]
+    },
+    {
+      "number": "2.6.3",
+      "module": "产品",
+      "title": "获取产品详情",
+      "method": "GET",
+      "path": "/products/id",
+      "url": "https://www.zentao.net/book/api/677.html",
+      "sha256": "03f69048cfe43697c7b68f035e27052efa64f1efb52216dd04854a8ff3defce0",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.6.4",
+      "module": "产品",
+      "title": "编辑产品",
+      "method": "PUT",
+      "path": "/product/id",
+      "url": "https://www.zentao.net/book/api/678.html",
+      "sha256": "e588b1e7aefca83230d73cc4d751090ccb63eb6b90ea2a521a8a6cee6aef1d29",
+      "body": [
+        [
+          [
+            "name",
+            "string",
+            "否",
+            "产品名称"
+          ],
+          [
+            "code",
+            "string",
+            "否",
+            "产品代号"
+          ],
+          [
+            "type",
+            "string",
+            "否",
+            "产品类型(normal 正常 | branch 多分支 | platform 多平台)"
+          ],
+          [
+            "line",
+            "int",
+            "否",
+            "所属产品线"
+          ],
+          [
+            "program",
+            "int",
+            "否",
+            "所属项目集"
+          ],
+          [
+            "status",
+            "string",
+            "否",
+            "产品状态(normal 正常 | closed 已关闭)"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "产品描述，富文本"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "name": "公司企业网站建设1"
+        }
+      ]
+    },
+    {
+      "number": "2.6.5",
+      "module": "产品",
+      "title": "删除产品",
+      "method": "DELETE",
+      "path": "/products/id",
+      "url": "https://www.zentao.net/book/api/679.html",
+      "sha256": "90f852fae5ae6a38a9dab733433278325eb527f03aebe090822a170431a04198",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.7.1",
+      "module": "产品计划",
+      "title": "获取产品计划列表",
+      "method": "GET",
+      "path": "/products/id/plans",
+      "url": "https://www.zentao.net/book/api/680.html",
+      "sha256": "f59b01c656f3326abe7e6564acde90ca2447a2e0536ca2f37b8757992e68ae96",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.7.2",
+      "module": "产品计划",
+      "title": "创建计划",
+      "method": "POST",
+      "path": "/products/id/plans",
+      "url": "https://www.zentao.net/book/api/681.html",
+      "sha256": "319c482b656905e8d1546b5313e092ce96bff9f7a3ae330bfb5cfa97b61247b6",
+      "body": [
+        [
+          [
+            "branch",
+            "int",
+            "否",
+            "所属分支"
+          ],
+          [
+            "title",
+            "string",
+            "是",
+            "计划名称"
+          ],
+          [
+            "begin",
+            "date",
+            "否",
+            "计划开始日期"
+          ],
+          [
+            "end",
+            "date",
+            "否",
+            "计划结束日期"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "计划描述"
+          ],
+          [
+            "parent",
+            "int",
+            "否",
+            "所属父计划"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.7.3",
+      "module": "产品计划",
+      "title": "获取计划详情",
+      "method": "GET",
+      "path": "/productplans/id",
+      "url": "https://www.zentao.net/book/api/682.html",
+      "sha256": "d7e0bcff08e5151fd0389b4666d760edde7c576bb138313197f0288d456219aa",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.7.4",
+      "module": "产品计划",
+      "title": "修改计划",
+      "method": "PUT",
+      "path": "/productplans/id",
+      "url": "https://www.zentao.net/book/api/683.html",
+      "sha256": "428b8f4663754708c5d7ab7ab6f0797e4fc80b98f1437587f379bec101844f93",
+      "body": [
+        [
+          [
+            "branch",
+            "int",
+            "否",
+            "所属分支"
+          ],
+          [
+            "title",
+            "string",
+            "是",
+            "计划名称"
+          ],
+          [
+            "begin",
+            "date",
+            "否",
+            "计划开始日期"
+          ],
+          [
+            "end",
+            "date",
+            "否",
+            "计划结束日期"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "计划描述"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.7.5",
+      "module": "产品计划",
+      "title": "删除计划",
+      "method": "DELETE",
+      "path": "/productsplan/id",
+      "url": "https://www.zentao.net/book/api/684.html",
+      "sha256": "b581d9d31482badcfabc7a7534c111e3c71d188e63683594d02db25386effe0a",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.7.6",
+      "module": "产品计划",
+      "title": "产品计划关联需求",
+      "method": "POST",
+      "path": "/productplans/id/linkstories",
+      "url": "https://www.zentao.net/book/api/685.html",
+      "sha256": "b610644c2068545dab2c4675540738455496a786494968299874ba783064911f",
+      "body": [
+        [
+          [
+            "stories",
+            "array",
+            "否",
+            "新增关联的需求，比如 [1, 2]"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "stories": [
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2.7.7",
+      "module": "产品计划",
+      "title": "产品计划取消关联需求",
+      "method": "POST",
+      "path": "/productplans/id/unlinkstories",
+      "url": "https://www.zentao.net/book/api/686.html",
+      "sha256": "357716c2b0a793ceb626d477ca99845600d8fca4b5872687f907399e72016888",
+      "body": [
+        [
+          [
+            "stories",
+            "array",
+            "是",
+            "取消关联的需求ID，比如 [1, 2]"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "stories": [
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2.7.8",
+      "module": "产品计划",
+      "title": "产品计划关联Bug",
+      "method": "POST",
+      "path": "/productplans/id/linkbugs",
+      "url": "https://www.zentao.net/book/api/687.html",
+      "sha256": "0c8f4f0c76878b2af0eaa22c909219d850555358ba03c9828fe0d1945a0665ec",
+      "body": [
+        [
+          [
+            "bugs",
+            "array",
+            "是",
+            "关联的Bug ID，比如 [1, 2]"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "bugs": [
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2.7.9",
+      "module": "产品计划",
+      "title": "产品计划取消关联Bug",
+      "method": "POST",
+      "path": "/productplans/id/unlinkbugs",
+      "url": "https://www.zentao.net/book/api/688.html",
+      "sha256": "4f093682c40a58e4679ea9ea1986d0edf7c4c700c680a02c694a6e46096ddd30",
+      "body": [
+        [
+          [
+            "bugs",
+            "array",
+            "是",
+            "取消关联的Bug ID，比如 [1, 2]"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "bugs": [
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2.8.1",
+      "module": "发布",
+      "title": "获取产品发布列表",
+      "method": "GET",
+      "path": "/products/id/releases",
+      "url": "https://www.zentao.net/book/api/689.html",
+      "sha256": "3275df79b2c7d5b79e3ff582d7b3ee488abd1ea2d53d0525cb79d7332032fd80",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.8.2",
+      "module": "发布",
+      "title": "获取项目发布列表",
+      "method": "GET",
+      "path": "/projects/id/releases",
+      "url": "https://www.zentao.net/book/api/690.html",
+      "sha256": "dfa69579afb88b37356cbe4d6b05dfe206fe871e6993e6cf04ed8f3787153942",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.9.1",
+      "module": "需求",
+      "title": "获取产品需求列表",
+      "method": "GET",
+      "path": "/products/id/stories",
+      "url": "https://www.zentao.net/book/api/691.html",
+      "sha256": "df76a64349d03caca54ba9b5c848f71d3e55d7110693fd60c2614beac4a6053c",
+      "body": [],
+      "query": [
+        [
+          [
+            "page",
+            "String",
+            "否",
+            "当前页数"
+          ],
+          [
+            "limit",
+            "String",
+            "否",
+            "每页需求数"
+          ],
+          [
+            "status",
+            "String",
+            "否",
+            "需求类型(allstory 全部|unclosed 未关闭|assignedtome 指给我|openedbyme 我创建|reviewbyme 待我评审|draftstory 草稿|reviewedbyme 我评审|assignedbyme 我指派|closedbyme 我关闭|activestory 激活|changingstory 变更中|reviewingstory 评审中|willclose 待关闭|closedstory 已关闭|feedback 来自反馈)"
+          ]
+        ],
+        [
+          [
+            "page",
+            "int",
+            "是",
+            "当前页面"
+          ],
+          [
+            "total",
+            "int",
+            "是",
+            "需求总数"
+          ],
+          [
+            "limit",
+            "int",
+            "是",
+            "每页需求数"
+          ],
+          [
+            "stories",
+            "array",
+            "是",
+            "需求列表"
+          ],
+          [
+            "∟ id",
+            "int",
+            "是",
+            "需求ID"
+          ],
+          [
+            "∟ product",
+            "int",
+            "是",
+            "所属产品"
+          ],
+          [
+            "∟ branch",
+            "int",
+            "是",
+            "所属分支"
+          ],
+          [
+            "∟ module",
+            "int",
+            "是",
+            "所属产品模块"
+          ],
+          [
+            "∟ fromBug",
+            "int",
+            "是",
+            "来自于Bug"
+          ],
+          [
+            "∟ source",
+            "string",
+            "是",
+            "需求来源(customer 客户 | user 用户 | po 产品经理 | market 市场)"
+          ],
+          [
+            "∟ sourceNote",
+            "string",
+            "是",
+            "来源备注"
+          ],
+          [
+            "∟ title",
+            "string",
+            "是",
+            "需求标题"
+          ],
+          [
+            "∟ category",
+            "string",
+            "是",
+            "类型(feature 功能 | interface 接口 | performance 性能 | safe 安全 | experience 体验 | improve 改进 | other 其他)"
+          ],
+          [
+            "∟ stage",
+            "string",
+            "是",
+            "阶段(wait 未开始 | planned 已计划 | projected 已立项 | developing 研发中 | developed 研发完毕 | testing 测试中 | tested 测试完毕 | verified 已验收 | released 已发布 | closed 已关闭)"
+          ],
+          [
+            "∟ pri",
+            "int",
+            "是",
+            "优先级"
+          ],
+          [
+            "∟ estimate",
+            "int",
+            "是",
+            "预计工时"
+          ],
+          [
+            "∟ status",
+            "string",
+            "是",
+            "状态(draft 草稿 | active 激活 | closed 已关闭 | changed 已变更)"
+          ],
+          [
+            "∟ openedBy",
+            "",
+            "是",
+            "创建人"
+          ],
+          [
+            "∟ openedDate",
+            "datetime",
+            "是",
+            "创建时间"
+          ],
+          [
+            "∟ toBug",
+            "int",
+            "是",
+            "转为Bug"
+          ]
+        ]
+      ],
+      "examples": []
+    },
+    {
+      "number": "2.9.2",
+      "module": "需求",
+      "title": "获取项目需求列表",
+      "method": "GET",
+      "path": "/projects/id/stories",
+      "url": "https://www.zentao.net/book/api/692.html",
+      "sha256": "c06395aae000b3a84ef7fcd75de7d3e10b34b614be9586bc0ddadaf3b4972292",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.9.3",
+      "module": "需求",
+      "title": "获取执行需求列表",
+      "method": "GET",
+      "path": "/executions/id/stories",
+      "url": "https://www.zentao.net/book/api/693.html",
+      "sha256": "167ee2432b2f1d5e1f8341b85d5c6f70fc6cf640508dfc4f6092aa30be0dc989",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.9.4",
+      "module": "需求",
+      "title": "创建需求",
+      "method": "POST",
+      "path": "/stories",
+      "url": "https://www.zentao.net/book/api/694.html",
+      "sha256": "47d1a89233733eac63a8d10c38d09f89a444ce9d0f460e631f89a4285a62fd63",
+      "body": [
+        [
+          [
+            "title",
+            "string",
+            "是",
+            "需求标题"
+          ],
+          [
+            "product",
+            "int",
+            "是",
+            "所属产品"
+          ],
+          [
+            "pri",
+            "int",
+            "是",
+            "优先级"
+          ],
+          [
+            "category",
+            "string",
+            "是",
+            "需求类型"
+          ],
+          [
+            "spec",
+            "string",
+            "否",
+            "需求描述"
+          ],
+          [
+            "verify",
+            "string",
+            "否",
+            "验收标准"
+          ],
+          [
+            "source",
+            "string",
+            "否",
+            "需求来源"
+          ],
+          [
+            "sourceNote",
+            "string",
+            "否",
+            "来源备注"
+          ],
+          [
+            "estimate",
+            "float",
+            "否",
+            "预计工时"
+          ],
+          [
+            "keywords",
+            "string",
+            "否",
+            "关键词"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "title": "测试需求",
+          "spec": "测试",
+          "product": 1,
+          "pri": 1,
+          "reviewer": [
+            "admin"
+          ],
+          "category": "feature"
+        }
+      ]
+    },
+    {
+      "number": "2.9.5",
+      "module": "需求",
+      "title": "获取需求详情",
+      "method": "GET",
+      "path": "/stories/id",
+      "url": "https://www.zentao.net/book/api/695.html",
+      "sha256": "b2be356163d63992ffb717ad31ff11f26e4c6e72c40e3418f56e20377ca29b4a",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.9.6",
+      "module": "需求",
+      "title": "变更需求",
+      "method": "POST",
+      "path": "/stories/id/change",
+      "url": "https://www.zentao.net/book/api/696.html",
+      "sha256": "159237e0c29b243f3e151a9c079707d05e56740fde2794aac997f8da2e49cc22",
+      "body": [
+        [
+          [
+            "title",
+            "string",
+            "否",
+            "需求标题"
+          ],
+          [
+            "spec",
+            "string",
+            "否",
+            "需求描述"
+          ],
+          [
+            "verify",
+            "string",
+            "否",
+            "验收标准"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "spec": "变更描述"
+        }
+      ]
+    },
+    {
+      "number": "2.9.7",
+      "module": "需求",
+      "title": "修改需求其他字段",
+      "method": "PUT",
+      "path": "/stories/id",
+      "url": "https://www.zentao.net/book/api/697.html",
+      "sha256": "d51fa0e3d8a74f135dc9a1e5e4d0f4ad33d438a2e75053b3796bf60b6dd6ab29",
+      "body": [
+        [
+          [
+            "module",
+            "int",
+            "否",
+            "所属模块"
+          ],
+          [
+            "source",
+            "string",
+            "否",
+            "来源"
+          ],
+          [
+            "sourceNote",
+            "string",
+            "否",
+            "来源备注"
+          ],
+          [
+            "pri",
+            "int",
+            "否",
+            "优先级"
+          ],
+          [
+            "category",
+            "string",
+            "否",
+            "类型(feature 功能 | interface 接口 | performance 性能 | safe 安全 | experience 体验 | improve 改进 | other 其他)"
+          ],
+          [
+            "estimate",
+            "float",
+            "否",
+            "预计工时"
+          ],
+          [
+            "keywords",
+            "string",
+            "否",
+            "关键词"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "category": "other"
+        }
+      ]
+    },
+    {
+      "number": "2.9.8",
+      "module": "需求",
+      "title": "删除需求",
+      "method": "DELETE",
+      "path": "/stories/id",
+      "url": "https://www.zentao.net/book/api/698.html",
+      "sha256": "89fec92a005f549d5b7b576d194956bb0238fa60804f7590ce97b9c604751371",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.9.9",
+      "module": "需求",
+      "title": "关闭需求",
+      "method": "POST",
+      "path": "/stories/id/close",
+      "url": "https://www.zentao.net/book/api/1060.html",
+      "sha256": "05c273505fc6618e9f84224d75c70b8df198c336a69bf143be11164f4fa09f55",
+      "body": [
+        [
+          [
+            "closedReason",
+            "string",
+            "是",
+            "关闭原因（done 已完成 | duplicate 重复 | postponed 延期 | willnotdo 不做 | cancel 已取消 | bydesign 设计如此）"
+          ],
+          [
+            "duplicate",
+            "int",
+            "否",
+            "重复研发需求 当 closedReason 选择为 duplicate 时，传入重复研发需求的 ID"
+          ],
+          [
+            "comment",
+            "string",
+            "否",
+            "备注"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "closedReason": "done",
+          "comment": "close the story"
+        }
+      ]
+    },
+    {
+      "number": "2.10.1",
+      "module": "项目",
+      "title": "获取项目列表",
+      "method": "GET",
+      "path": "/projects",
+      "url": "https://www.zentao.net/book/api/699.html",
+      "sha256": "5cfc2b311f49936570f7485b7766dcb1604852169c945e433d4a14b04ad4a483",
+      "body": [],
+      "query": [
+        [
+          [
+            "page",
+            "String",
+            "",
+            "第几页，默认为1"
+          ],
+          [
+            "limit",
+            "String",
+            "",
+            "每页项目数量，默认20"
+          ]
+        ]
+      ],
+      "examples": []
+    },
+    {
+      "number": "2.10.2",
+      "module": "项目",
+      "title": "创建项目",
+      "method": "POST",
+      "path": "/projects",
+      "url": "https://www.zentao.net/book/api/700.html",
+      "sha256": "23c8dce2d7378592a20fda6eca8214691712075d4561e7142add72e4bc037cbb",
+      "body": [
+        [
+          [
+            "name",
+            "string",
+            "是",
+            "项目名称"
+          ],
+          [
+            "begin",
+            "date",
+            "是",
+            "计划开始日期"
+          ],
+          [
+            "end",
+            "date",
+            "是",
+            "计划结束日期"
+          ],
+          [
+            "products",
+            "array",
+            "是",
+            "关联产品，比如 [1, 2]，不能为空。"
+          ],
+          [
+            "code",
+            "string",
+            "是",
+            "项目编号"
+          ],
+          [
+            "model",
+            "string",
+            "否",
+            "项目模型，默认为scrum"
+          ],
+          [
+            "parent",
+            "int",
+            "否",
+            "所属项目集，默认为0"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "name": "test",
+          "code": "test",
+          "begin": "2021-01-01",
+          "end": "2022-01-01",
+          "products": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2.10.3",
+      "module": "项目",
+      "title": "获取项目详情",
+      "method": "GET",
+      "path": "/projects/id",
+      "url": "https://www.zentao.net/book/api/701.html",
+      "sha256": "4e50d113265e696ccf5f10abbf8255d8fa2040690fea829f653cba754738eefe",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.10.4",
+      "module": "项目",
+      "title": "修改项目",
+      "method": "PUT",
+      "path": "/projects/id",
+      "url": "https://www.zentao.net/book/api/702.html",
+      "sha256": "b06a780de4e23fbc3d6207011fa0833db435b8f49089d5386cb78804e6b4829a",
+      "body": [
+        [
+          [
+            "name",
+            "string",
+            "否",
+            "项目名称"
+          ],
+          [
+            "code",
+            "string",
+            "否",
+            "项目代号"
+          ],
+          [
+            "parent",
+            "int",
+            "否",
+            "所属项目集"
+          ],
+          [
+            "PM",
+            "int",
+            "否",
+            "项目负责人"
+          ],
+          [
+            "budget",
+            "int",
+            "否",
+            "项目预算金额"
+          ],
+          [
+            "budgetUnit",
+            "string",
+            "否",
+            "预算币种(CNY | USD)"
+          ],
+          [
+            "days",
+            "int",
+            "否",
+            "可用工作日"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "项目描述"
+          ],
+          [
+            "acl",
+            "string",
+            "否",
+            "访问控制(open 公开 | private 私有)"
+          ],
+          [
+            "whitelist",
+            "array",
+            "否",
+            "白名单"
+          ],
+          [
+            "auth",
+            "string",
+            "否",
+            "权限控制(extend 继承 | reset 重新定义)"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "name": "修改项目",
+          "PM": "admin"
+        }
+      ]
+    },
+    {
+      "number": "2.10.5",
+      "module": "项目",
+      "title": "删除项目",
+      "method": "DELETE",
+      "path": "/projects/id",
+      "url": "https://www.zentao.net/book/api/703.html",
+      "sha256": "f197e08fc79f2b5c6a5bd9738fd8539b81ae1e57d94e9e3a8017386f065bdae7",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.11.1",
+      "module": "版本",
+      "title": "获取项目版本列表",
+      "method": "GET",
+      "path": "/projects/id/builds",
+      "url": "https://www.zentao.net/book/api/704.html",
+      "sha256": "46ba11eff701bae0b408b938690deca523f28e59aac0f5ae5b674872bddd1402",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.11.2",
+      "module": "版本",
+      "title": "获取执行版本列表",
+      "method": "GET",
+      "path": "/executions/id/builds",
+      "url": "https://www.zentao.net/book/api/705.html",
+      "sha256": "aa0124f37cc3ec5aee3199168df1955d3fe1d20c89c55482d69b8101a826d7b0",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.11.3",
+      "module": "版本",
+      "title": "创建版本",
+      "method": "POST",
+      "path": "/projects/id/builds",
+      "url": "https://www.zentao.net/book/api/706.html",
+      "sha256": "8c5bf42cc27a00d906b75a8fda6dbdca4c1d2adeb4e7e7ef1e17a2f4a1d774b0",
+      "body": [
+        [
+          [
+            "execution",
+            "int",
+            "是",
+            "所属执行"
+          ],
+          [
+            "product",
+            "int",
+            "是",
+            "所属产品"
+          ],
+          [
+            "branch",
+            "int",
+            "否",
+            "所属分支"
+          ],
+          [
+            "name",
+            "string",
+            "是",
+            "版本名称"
+          ],
+          [
+            "builder",
+            "string",
+            "是",
+            "构建者"
+          ],
+          [
+            "date",
+            "date",
+            "否",
+            "打包日期"
+          ],
+          [
+            "scmPath",
+            "string",
+            "否",
+            "源代码地址"
+          ],
+          [
+            "filePath",
+            "string",
+            "否",
+            "下载地址"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "版本描述"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "name": "test",
+          "product": 4,
+          "date": "2021-01-01",
+          "execution": 42,
+          "builder": "admin"
+        }
+      ]
+    },
+    {
+      "number": "2.11.4",
+      "module": "版本",
+      "title": "获取版本详情",
+      "method": "GET",
+      "path": "/builds/id",
+      "url": "https://www.zentao.net/book/api/707.html",
+      "sha256": "e2fa3f37bff17c0165e4e56b60943a2b8a2630535b3a450b969c87b3714ee2cf",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.11.5",
+      "module": "版本",
+      "title": "修改版本",
+      "method": "PUT",
+      "path": "/builds/id",
+      "url": "https://www.zentao.net/book/api/708.html",
+      "sha256": "596c3f18d1f125956db0afa46bcdfe2869da4fbc437787e05db6bfc27dfe79b5",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.11.6",
+      "module": "版本",
+      "title": "删除版本",
+      "method": "DELETE",
+      "path": "/builds/id",
+      "url": "https://www.zentao.net/book/api/709.html",
+      "sha256": "88dfa29a4d1de6e87d266882aee9605427edda23df8e281db3937c4a8a8b9b06",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.12.1",
+      "module": "执行",
+      "title": "获取项目的执行列表",
+      "method": "GET",
+      "path": "/projects/id/executions",
+      "url": "https://www.zentao.net/book/api/710.html",
+      "sha256": "84034c367e09a5d87317647166beabd73ed4ba4350a1a7cd700cf1646598879e",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.12.2",
+      "module": "执行",
+      "title": "创建执行",
+      "method": "POST",
+      "path": "/projects/id/executions",
+      "url": "https://www.zentao.net/book/api/711.html",
+      "sha256": "5a2d9a42f413814e876ee7899c0c9a0cac578634c3438916d0326fab2579f2c9",
+      "body": [
+        [
+          [
+            "project",
+            "int",
+            "是",
+            "所属项目"
+          ],
+          [
+            "name",
+            "string",
+            "是",
+            "执行名称"
+          ],
+          [
+            "code",
+            "string",
+            "是",
+            "执行代号"
+          ],
+          [
+            "begin",
+            "date",
+            "是",
+            "计划开始日期"
+          ],
+          [
+            "end",
+            "date",
+            "是",
+            "计划结束日期"
+          ],
+          [
+            "days",
+            "int",
+            "否",
+            "可用工作日"
+          ],
+          [
+            "lifetime",
+            "string",
+            "否",
+            "类型(short 短期 | long 长期 | ops 运维)"
+          ],
+          [
+            "PO",
+            "string",
+            "否",
+            "产品负责人"
+          ],
+          [
+            "PM",
+            "string",
+            "否",
+            "迭代负责人"
+          ],
+          [
+            "QD",
+            "string",
+            "否",
+            "测试负责人"
+          ],
+          [
+            "RD",
+            "string",
+            "否",
+            "发布负责人"
+          ],
+          [
+            "teamMembers",
+            "array",
+            "否",
+            "团队成员 [\"admin\"]"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "迭代描述"
+          ],
+          [
+            "acl",
+            "string",
+            "否",
+            "访问控制(private 私有 | open 继承项目权限)"
+          ],
+          [
+            "whitelist",
+            "array",
+            "否",
+            "白名单"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "name": "测试执行1",
+          "code": "test1",
+          "begin": "2021-12-01",
+          "end": "2021-12-11",
+          "days": 10
+        }
+      ]
+    },
+    {
+      "number": "2.12.3",
+      "module": "执行",
+      "title": "查看执行详情",
+      "method": "GET",
+      "path": "/executions/id",
+      "url": "https://www.zentao.net/book/api/712.html",
+      "sha256": "669b6273d4219b450e0d713f97616b8ef22d68a31e2e8622d4b0355733991905",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.12.4",
+      "module": "执行",
+      "title": "修改执行",
+      "method": "PUT",
+      "path": "/executions/id",
+      "url": "https://www.zentao.net/book/api/713.html",
+      "sha256": "48cb3f6c061a6474764e487724694b80926f270885254769b487751ebc465fe5",
+      "body": [
+        [
+          [
+            "project",
+            "int",
+            "是",
+            "所属项目"
+          ],
+          [
+            "name",
+            "string",
+            "是",
+            "执行名称"
+          ],
+          [
+            "code",
+            "string",
+            "是",
+            "执行代号"
+          ],
+          [
+            "begin",
+            "date",
+            "是",
+            "计划开始日期"
+          ],
+          [
+            "end",
+            "date",
+            "是",
+            "计划结束日期"
+          ],
+          [
+            "days",
+            "int",
+            "否",
+            "可用工作日"
+          ],
+          [
+            "lifetime",
+            "string",
+            "否",
+            "类型(short 短期 | long 长期 | ops 运维)"
+          ],
+          [
+            "PO",
+            "string",
+            "否",
+            "产品负责人"
+          ],
+          [
+            "PM",
+            "string",
+            "否",
+            "迭代负责人"
+          ],
+          [
+            "QD",
+            "string",
+            "否",
+            "测试负责人"
+          ],
+          [
+            "RD",
+            "string",
+            "否",
+            "发布负责人"
+          ],
+          [
+            "teamMembers",
+            "array",
+            "否",
+            "团队成员 [\"admin\"]"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "迭代描述"
+          ],
+          [
+            "acl",
+            "string",
+            "否",
+            "访问控制(private 私有 | open 继承项目权限)"
+          ],
+          [
+            "whitelist",
+            "array",
+            "否",
+            "白名单"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "name": "测试执行1",
+          "code": "test1",
+          "begin": "2021-12-01",
+          "end": "2021-12-11",
+          "days": 10
+        }
+      ]
+    },
+    {
+      "number": "2.12.5",
+      "module": "执行",
+      "title": "删除执行",
+      "method": "DELETE",
+      "path": "/executions/id",
+      "url": "https://www.zentao.net/book/api/714.html",
+      "sha256": "dd35124479fa5e9f1f5fb9df20c8acd68494f4bcba28b679174de32d2d4ec6ab",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.13.1",
+      "module": "任务",
+      "title": "获取执行任务列表",
+      "method": "GET",
+      "path": "/executions/id/tasks",
+      "url": "https://www.zentao.net/book/api/715.html",
+      "sha256": "69e141505c93179e1bff8d494b3ff75b349f19a502b92b441368cba68afb8ae0",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.13.2",
+      "module": "任务",
+      "title": "创建任务",
+      "method": "POST",
+      "path": "/executions/id/tasks",
+      "url": "https://www.zentao.net/book/api/716.html",
+      "sha256": "21ecc1adda202d3ef4515b0f2ea3982c401b545bb1878a3d0f1f31937a41d994",
+      "body": [
+        [
+          [
+            "module",
+            "int",
+            "否",
+            "所属模块"
+          ],
+          [
+            "story",
+            "int",
+            "否",
+            "关联需求"
+          ],
+          [
+            "fromBug",
+            "int",
+            "否",
+            "来自于Bug"
+          ],
+          [
+            "name",
+            "string",
+            "是",
+            "任务名称"
+          ],
+          [
+            "type",
+            "string",
+            "是",
+            "任务类型(design 设计 | devel 开发 | request 需求 | test 测试 | study 研究 | discuss 讨论 | ui 界面 | affair 事务 | misc 其他)"
+          ],
+          [
+            "assignedTo",
+            "string",
+            "是",
+            "指派给"
+          ],
+          [
+            "pri",
+            "int",
+            "否",
+            "优先级"
+          ],
+          [
+            "estimate",
+            "float",
+            "否",
+            "预计工时"
+          ],
+          [
+            "estStarted",
+            "date",
+            "是",
+            "预计开始日期"
+          ],
+          [
+            "deadline",
+            "date",
+            "是",
+            "预计结束日期"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "name": "testtt",
+          "assignedTo": "admin",
+          "type": "devel",
+          "estStarted": "2021-12-01",
+          "deadline": "2021-12-31"
+        }
+      ]
+    },
+    {
+      "number": "2.13.3",
+      "module": "任务",
+      "title": "获取任务详情",
+      "method": "GET",
+      "path": "/tasks/id",
+      "url": "https://www.zentao.net/book/api/717.html",
+      "sha256": "a90b52f995d26f4235e03bd106eebc6f6bb094ab7fc73e372fdf1c153e6d69fb",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.13.4",
+      "module": "任务",
+      "title": "修改任务",
+      "method": "PUT",
+      "path": "/tasks/id",
+      "url": "https://www.zentao.net/book/api/718.html",
+      "sha256": "357d6856e870ded950d6477d7b9003a084f3b645750972fc0b641549f4bdce24",
+      "body": [
+        [
+          [
+            "module",
+            "int",
+            "否",
+            "所属模块"
+          ],
+          [
+            "story",
+            "int",
+            "否",
+            "关联需求"
+          ],
+          [
+            "fromBug",
+            "int",
+            "否",
+            "来自于Bug"
+          ],
+          [
+            "name",
+            "string",
+            "否",
+            "任务名称"
+          ],
+          [
+            "type",
+            "string",
+            "否",
+            "任务类型(design 设计 | devel 开发 | request 需求 | test 测试 | study 研究 | discuss 讨论 | ui 界面 | affair 事务 | misc 其他)"
+          ],
+          [
+            "assignedTo",
+            "string",
+            "否",
+            "指派给"
+          ],
+          [
+            "pri",
+            "int",
+            "否",
+            "优先级"
+          ],
+          [
+            "estimate",
+            "float",
+            "否",
+            "预计工时"
+          ],
+          [
+            "estStarted",
+            "date",
+            "否",
+            "预计开始日期"
+          ],
+          [
+            "deadline",
+            "date",
+            "否",
+            "预计结束日期"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "name": "testtt",
+          "assignedTo": "admin",
+          "type": "devel",
+          "estStarted": "2021-12-01",
+          "deadline": "2021-12-31"
+        }
+      ]
+    },
+    {
+      "number": "2.13.5",
+      "module": "任务",
+      "title": "删除任务",
+      "method": "DELETE",
+      "path": "/tasks/id",
+      "url": "https://www.zentao.net/book/api/719.html",
+      "sha256": "f8060218e2a9af30d62c8c97aa59b6f5a74e36a17550318699a1966bf93c43bc",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.13.6",
+      "module": "任务",
+      "title": "开始任务",
+      "method": "POST",
+      "path": "/tasks/id/start",
+      "url": "https://www.zentao.net/book/api/967.html",
+      "sha256": "d9283d4562a991eb359028d5aa9afda2c5416308643fdc6a8f2f480bd3b35214",
+      "body": [
+        [
+          [
+            "assignedTo",
+            "string",
+            "否",
+            "指派给"
+          ],
+          [
+            "realStarted",
+            "date",
+            "否",
+            "实际开始"
+          ],
+          [
+            "consumed",
+            "int",
+            "否",
+            "总计消耗"
+          ],
+          [
+            "left",
+            "int",
+            "是",
+            "预计剩余"
+          ],
+          [
+            "comment",
+            "string",
+            "否",
+            "备注"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "assignedTo": "test",
+          "realStarted": "2022-12-02 11:04:59",
+          "consumed": 2,
+          "left": 2,
+          "comment": "开始任务"
+        }
+      ]
+    },
+    {
+      "number": "2.13.7",
+      "module": "任务",
+      "title": "暂停任务",
+      "method": "POST",
+      "path": "/tasks/id/pause",
+      "url": "https://www.zentao.net/book/api/968.html",
+      "sha256": "d72db77976a3128921eee1945f6203cb1a644a9b2738a892c448a989573ecc18",
+      "body": [
+        [
+          [
+            "comment",
+            "string",
+            "否",
+            "备注"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "comment": "暂停任务"
+        }
+      ]
+    },
+    {
+      "number": "2.13.8",
+      "module": "任务",
+      "title": "继续任务",
+      "method": "POST",
+      "path": "/tasks/id/restart",
+      "url": "https://www.zentao.net/book/api/969.html",
+      "sha256": "84eb657c250b85f00a7f254496677a1385069ce577812b21f70960a53b81b00d",
+      "body": [
+        [
+          [
+            "assignedTo",
+            "string",
+            "否",
+            "指派给"
+          ],
+          [
+            "realStarted",
+            "date",
+            "否",
+            "实际开始"
+          ],
+          [
+            "consumed",
+            "int",
+            "否",
+            "总计消耗"
+          ],
+          [
+            "left",
+            "int",
+            "是",
+            "预计剩余"
+          ],
+          [
+            "comment",
+            "string",
+            "否",
+            "备注"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "assignedTo": "admin",
+          "realStarted": "2022-12-02 14:04:59",
+          "consumed": 3,
+          "left": 3,
+          "comment": "重新开始任务"
+        }
+      ]
+    },
+    {
+      "number": "2.13.9",
+      "module": "任务",
+      "title": "完成任务",
+      "method": "POST",
+      "path": "/tasks/id/finish",
+      "url": "https://www.zentao.net/book/api/970.html",
+      "sha256": "eac96be6ab55fd8fe386e2e25577092b94c9e17ca488ae264894dd1c62e66fa0",
+      "body": [
+        [
+          [
+            "assignedTo",
+            "string",
+            "否",
+            "指派给，如果没填会使用任务当前的指派人"
+          ],
+          [
+            "currentConsumed",
+            "int",
+            "是",
+            "本次消耗"
+          ],
+          [
+            "realStarted",
+            "date",
+            "否",
+            "实际开始，如果没填会使用任务开始(继续)时填写的实际开始时间"
+          ],
+          [
+            "finishedDate",
+            "date",
+            "是",
+            "完成时间"
+          ],
+          [
+            "comment",
+            "string",
+            "否",
+            "备注"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "currentConsumed": 1,
+          "assignedTo": "admin",
+          "realStarted": "2022-12-02 14:04:59",
+          "finishedDate": "2022-12-02 15:45:27",
+          "comment": "完成任务"
+        }
+      ]
+    },
+    {
+      "number": "2.13.10",
+      "module": "任务",
+      "title": "关闭任务",
+      "method": "POST",
+      "path": "/tasks/id/close",
+      "url": "https://www.zentao.net/book/api/1200.html",
+      "sha256": "c1bb1c7ee66fd41de2b9a9be98950352090a9197bf7f1b05cef8560b8d750954",
+      "body": [
+        [
+          [
+            "comment",
+            "string",
+            "否",
+            "备注"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "comment": "关闭任务"
+        }
+      ]
+    },
+    {
+      "number": "2.13.11",
+      "module": "任务",
+      "title": "添加任务日志",
+      "method": "POST",
+      "path": "/tasks/id/estimate",
+      "url": "https://www.zentao.net/book/api/1198.html",
+      "sha256": "14e39e45ef55e69594d960eda4840e64e70d30525d6a2ea757105859b34f9c10",
+      "body": [
+        [
+          [
+            "id",
+            "array",
+            "是",
+            "从0自增，表示记录几条日志，如3条日志则填入 [0,1,2]"
+          ],
+          [
+            "objectID",
+            "array",
+            "是",
+            "任务ID"
+          ],
+          [
+            "dates",
+            "array",
+            "是",
+            "日期"
+          ],
+          [
+            "work",
+            "array",
+            "是",
+            "工作内容"
+          ],
+          [
+            "consumed",
+            "array",
+            "是",
+            "消耗"
+          ],
+          [
+            "left",
+            "array",
+            "是",
+            "剩余"
+          ],
+          [
+            "objectType",
+            "array",
+            "是",
+            "对象类型，此处填入task"
+          ]
+        ],
+        [
+          [
+            "date",
+            "array",
+            "是",
+            "日期"
+          ],
+          [
+            "work",
+            "array",
+            "是",
+            "工作内容"
+          ],
+          [
+            "consumed",
+            "array",
+            "是",
+            "消耗"
+          ],
+          [
+            "left",
+            "array",
+            "是",
+            "剩余"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "id": [
+            0,
+            1,
+            2
+          ],
+          "objectID": [
+            2,
+            2,
+            2
+          ],
+          "dates": [
+            "2024-02-27",
+            "2024-02-28",
+            "2024-02-29"
+          ],
+          "work": [
+            "work1",
+            "work2",
+            "work3"
+          ],
+          "consumed": [
+            2,
+            2,
+            2
+          ],
+          "left": [
+            6,
+            4,
+            2
+          ],
+          "objectType": [
+            "task",
+            "task",
+            "task"
+          ]
+        },
+        {
+          "date": [
+            "2024-02-27",
+            "2024-02-28",
+            "2024-02-29"
+          ],
+          "work": [
+            "work1",
+            "work2",
+            "work3"
+          ],
+          "consumed": [
+            2,
+            2,
+            2
+          ],
+          "left": [
+            6,
+            4,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2.13.12",
+      "module": "任务",
+      "title": "获取任务日志",
+      "method": "GET",
+      "path": "/tasks/id/estimate",
+      "url": "https://www.zentao.net/book/api/1199.html",
+      "sha256": "86621e52c974a0598659602fb326aa620ea55b050e38ce193051127c77b51cb1",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.14.1",
+      "module": "Bug",
+      "title": "获取产品Bug列表",
+      "method": "GET",
+      "path": "/products/id/bugs",
+      "url": "https://www.zentao.net/book/api/720.html",
+      "sha256": "c6dcc93040e8b244cb1b4b5a2af443cb295375fb4c3292792bb66fb1f54c508f",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.14.2",
+      "module": "Bug",
+      "title": "创建Bug",
+      "method": "POST",
+      "path": "/products/id/bugs",
+      "url": "https://www.zentao.net/book/api/721.html",
+      "sha256": "ef95239fbb42399a9c1721646947e21ab54c9ba38ad8262aa80acf118d047db4",
+      "body": [
+        [
+          [
+            "branch",
+            "int",
+            "否",
+            "所属分支"
+          ],
+          [
+            "module",
+            "int",
+            "否",
+            "所属模块"
+          ],
+          [
+            "execution",
+            "int",
+            "否",
+            "所属执行"
+          ],
+          [
+            "title",
+            "string",
+            "是",
+            "Bug标题"
+          ],
+          [
+            "keywords",
+            "string",
+            "否",
+            "关键词"
+          ],
+          [
+            "severity",
+            "int",
+            "是",
+            "严重程度"
+          ],
+          [
+            "pri",
+            "int",
+            "是",
+            "优先级"
+          ],
+          [
+            "type",
+            "string",
+            "是",
+            "Bug类型(codeerror 代码错误 | config 配置相关 | install 安装部署 | security 安全相关 | performance 性能问题 | standard 标准规范 | automation |测试脚本 | designdefect 设计缺陷 | others 其他)"
+          ],
+          [
+            "os",
+            "string",
+            "否",
+            "操作系统"
+          ],
+          [
+            "browser",
+            "string",
+            "否",
+            "浏览器"
+          ],
+          [
+            "steps",
+            "string",
+            "否",
+            "重现步骤"
+          ],
+          [
+            "task",
+            "int",
+            "否",
+            "相关任务"
+          ],
+          [
+            "story",
+            "int",
+            "否",
+            "相关需求"
+          ],
+          [
+            "deadline",
+            "date",
+            "否",
+            "截止日期"
+          ],
+          [
+            "openedBuild",
+            "array",
+            "否",
+            "影响版本"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "title": "Bug2",
+          "severity": 1,
+          "pri": 1,
+          "steps": "",
+          "type": "codeerror",
+          "openedBuild": [
+            "trunk"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2.14.3",
+      "module": "Bug",
+      "title": "获取Bug详情",
+      "method": "GET",
+      "path": "/bugs/id",
+      "url": "https://www.zentao.net/book/api/722.html",
+      "sha256": "9112f30be7b0b7bca5b74fcbd7cd2d94cafeeb21a50d99bbde220b2879c30e0b",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.14.4",
+      "module": "Bug",
+      "title": "修改Bug",
+      "method": "PUT",
+      "path": "/bugs/id",
+      "url": "https://www.zentao.net/book/api/723.html",
+      "sha256": "cfcee3a037e89b94102b047723403cf55c4408298ae35a2d942d5cfff0bd4b02",
+      "body": [
+        [
+          [
+            "branch",
+            "int",
+            "否",
+            "所属分支"
+          ],
+          [
+            "module",
+            "int",
+            "否",
+            "所属模块"
+          ],
+          [
+            "execution",
+            "int",
+            "否",
+            "所属执行"
+          ],
+          [
+            "title",
+            "string",
+            "是",
+            "Bug标题"
+          ],
+          [
+            "keywords",
+            "string",
+            "否",
+            "关键词"
+          ],
+          [
+            "severity",
+            "int",
+            "是",
+            "严重程度"
+          ],
+          [
+            "pri",
+            "int",
+            "是",
+            "优先级"
+          ],
+          [
+            "type",
+            "string",
+            "是",
+            "Bug类型(codeerror 代码错误 | config 配置相关 | install 安装部署 | security 安全相关 | performance 性能问题 | standard 标准规范 | automation |测试脚本 | designdefect 设计缺陷 | others 其他)"
+          ],
+          [
+            "os",
+            "string",
+            "否",
+            "操作系统"
+          ],
+          [
+            "browser",
+            "string",
+            "否",
+            "浏览器"
+          ],
+          [
+            "steps",
+            "string",
+            "否",
+            "重现步骤"
+          ],
+          [
+            "task",
+            "int",
+            "否",
+            "相关任务"
+          ],
+          [
+            "story",
+            "int",
+            "否",
+            "相关需求"
+          ],
+          [
+            "deadline",
+            "date",
+            "否",
+            "截止日期"
+          ],
+          [
+            "openedBuild",
+            "array",
+            "否",
+            "影响版本"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "title": "Bug2",
+          "severity": 1,
+          "pri": 1,
+          "steps": "",
+          "type": "codeerror",
+          "openedBuild": [
+            "trunk"
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2.14.5",
+      "module": "Bug",
+      "title": "删除Bug",
+      "method": "DELETE",
+      "path": "/bugs/id",
+      "url": "https://www.zentao.net/book/api/724.html",
+      "sha256": "8e860a7a9b6fc8aedf469b2db1e9ed32010f92623c47b55691112d83492c38ef",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.14.6",
+      "module": "Bug",
+      "title": "确认Bug",
+      "method": "POST",
+      "path": "/bugs/id/confirm",
+      "url": "https://www.zentao.net/book/api/1120.html",
+      "sha256": "c5ae44fcb7639fc14f04921bf9568e3991c95682940105342d3100811df8099f",
+      "body": [
+        [
+          [
+            "assignedTo",
+            "string",
+            "否",
+            "指派给"
+          ],
+          [
+            "type",
+            "string",
+            "否",
+            "Bug类型(co deerror 代码错误 | config 配置相关 | install 安装部署 | security 安全相关 | performance 性能问题 | standard 标准规范 | automation |测试脚本 | designdefect 设计缺陷 | others 其他)"
+          ],
+          [
+            "mailto",
+            "array",
+            "否",
+            "抄送给"
+          ],
+          [
+            "comment",
+            "string",
+            "否",
+            "备注"
+          ],
+          [
+            "pri",
+            "int",
+            "否",
+            "优先级"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "assignedTo": "admin",
+          "mailto": [
+            "lihua"
+          ],
+          "pri": 1,
+          "type": "codeerror",
+          "comment": "this is a comment"
+        }
+      ]
+    },
+    {
+      "number": "2.14.7",
+      "module": "Bug",
+      "title": "关闭Bug",
+      "method": "POST",
+      "path": "/bugs/id/close",
+      "url": "https://www.zentao.net/book/api/1121.html",
+      "sha256": "78474f57c04fe01253ee6b20b490a5e95a39aef7fa5b238595e94bf8e7ee463f",
+      "body": [
+        [
+          [
+            "comment",
+            "string",
+            "否",
+            "备注"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "comment": "this is a comment"
+        }
+      ]
+    },
+    {
+      "number": "2.14.8",
+      "module": "Bug",
+      "title": "激活Bug",
+      "method": "POST",
+      "path": "/bugs/id/active",
+      "url": "https://www.zentao.net/book/api/1142.html",
+      "sha256": "74dbd7897d83842d808c839cc65c0433cefec6dde8d77dc08e445f6c842af3cd",
+      "body": [
+        [
+          [
+            "assignedTo",
+            "string",
+            "否",
+            "指派给"
+          ],
+          [
+            "openedBuild",
+            "array",
+            "否",
+            "影响版本"
+          ],
+          [
+            "comment",
+            "string",
+            "否",
+            "备注"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "assignedTo": "dev1",
+          "openedBuild": [
+            "trunk"
+          ],
+          "comment": "active bug"
+        }
+      ]
+    },
+    {
+      "number": "2.14.9",
+      "module": "Bug",
+      "title": "解决Bug",
+      "method": "POST",
+      "path": "/bugs/id/resolve",
+      "url": "https://www.zentao.net/book/api/1181.html",
+      "sha256": "8bac84d56d186c952582ea8cfe874dbfae8e864c9f6cd2624ec7661b0d00b12b",
+      "body": [
+        [
+          [
+            "resolution",
+            "string",
+            "是",
+            "解决方案(bydesign 设计如此 | duplicate 重复bug | external 外部原因 | fixed 已解决 | notrepro 无法重现 | postponed 延期处理 | willnotfix 不予解决 | tostory 转需求)"
+          ],
+          [
+            "duplicateBug",
+            "int",
+            "否",
+            "重复Bug ID， 当 resolution 选择 duplicate 时 ，应传入此参数"
+          ],
+          [
+            "resolvedBuild",
+            "int/string",
+            "否",
+            "解决版本，传入版本的ID，或者传入 trunk（主干）"
+          ],
+          [
+            "resolvedDate",
+            "datetime",
+            "否",
+            "解决时间"
+          ],
+          [
+            "assignedTo",
+            "string",
+            "否",
+            "指派给"
+          ],
+          [
+            "comment",
+            "string",
+            "否",
+            "备注"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "resolution": "duplicate",
+          "duplicateBug": 5,
+          "resolvedBuild": "trunk",
+          "resolvedDate": "2023-07-02 20:10:45",
+          "assignedTo": "admin",
+          "comment": "fix bug comment"
+        }
+      ]
+    },
+    {
+      "number": "2.15.1",
+      "module": "用例",
+      "title": "获取产品用例列表",
+      "method": "GET",
+      "path": "/products/id/testcases",
+      "url": "https://www.zentao.net/book/api/725.html",
+      "sha256": "db332ac56f52edc7d4d2af0e93567a3fee0f5b54e7c970055b4e56fd1ba45186",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.15.2",
+      "module": "用例",
+      "title": "创建用例",
+      "method": "POST",
+      "path": "/products/id/testcases",
+      "url": "https://www.zentao.net/book/api/726.html",
+      "sha256": "098306ec321b1968fc1e1decf9b2e544d01ac3ab96c87f77443f0582e9e1498e",
+      "body": [
+        [
+          [
+            "branch",
+            "int",
+            "否",
+            "所属分支"
+          ],
+          [
+            "module",
+            "int",
+            "否",
+            "所属模块"
+          ],
+          [
+            "story",
+            "int",
+            "否",
+            "所属需求"
+          ],
+          [
+            "title",
+            "string",
+            "是",
+            "用例标题"
+          ],
+          [
+            "type",
+            "string",
+            "是",
+            "用例类型(feature 功能测试 | performance 性能测试 | config 配置相关 | install 安装部署 | security 安全相关 | interface 接口测试 | unit 单元测试 | other 其他)"
+          ],
+          [
+            "stage",
+            "string",
+            "否",
+            "适用阶段(unittest 单元测试阶段 | feature 功能测试阶段 | intergrate 集成测试阶段 | system 系统测试阶段 | smoke 冒烟测试阶段 | bvt 版本验证阶段)"
+          ],
+          [
+            "precondition",
+            "string",
+            "否",
+            "前置条件"
+          ],
+          [
+            "pri",
+            "int",
+            "否",
+            "优先级"
+          ],
+          [
+            "steps",
+            "array",
+            "是",
+            "用例步骤"
+          ],
+          [
+            "∟ desc",
+            "string",
+            "是",
+            "步骤"
+          ],
+          [
+            "∟ expect",
+            "string",
+            "是",
+            "期望"
+          ],
+          [
+            "keywords",
+            "string",
+            "否",
+            "关键词"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "title": "case1",
+          "pri": 1,
+          "steps": [
+            {
+              "desc": "步骤1",
+              "expect": "结果1"
+            }
+          ],
+          "type": "feature"
+        }
+      ]
+    },
+    {
+      "number": "2.15.3",
+      "module": "用例",
+      "title": "获取用例详情",
+      "method": "GET",
+      "path": "/testcases/id",
+      "url": "https://www.zentao.net/book/api/727.html",
+      "sha256": "f75a68b9261296261acc6796a5d9280a0089416b7408a4fda354aaf30b862810",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.15.4",
+      "module": "用例",
+      "title": "修改用例",
+      "method": "PUT",
+      "path": "/testcases/id",
+      "url": "https://www.zentao.net/book/api/728.html",
+      "sha256": "bdf19e98659f6380c3d6fdbbf7f8a5e627eebdcc7078077f7d071638475d6ff4",
+      "body": [
+        [
+          [
+            "branch",
+            "int",
+            "否",
+            "所属分支"
+          ],
+          [
+            "module",
+            "int",
+            "否",
+            "所属模块"
+          ],
+          [
+            "story",
+            "int",
+            "否",
+            "所属需求"
+          ],
+          [
+            "title",
+            "string",
+            "否",
+            "用例标题"
+          ],
+          [
+            "type",
+            "string",
+            "否",
+            "用例类型(feature 功能测试 | performance 性能测试 | config 配置相关 | install 安装部署 | security 安全相关 | interface 接口测试 | unit 单元测试 | other 其他)"
+          ],
+          [
+            "stage",
+            "string",
+            "否",
+            "适用阶段(unittest 单元测试阶段 | feature 功能测试阶段 | intergrate 集成测试阶段 | system 系统测试阶段 | smoke 冒烟测试阶段 | bvt 版本验证阶段)"
+          ],
+          [
+            "precondition",
+            "string",
+            "否",
+            "前置条件"
+          ],
+          [
+            "pri",
+            "int",
+            "否",
+            "优先级"
+          ],
+          [
+            "steps",
+            "array",
+            "否",
+            "用例步骤"
+          ],
+          [
+            "∟ desc",
+            "string",
+            "否",
+            "步骤"
+          ],
+          [
+            "∟ expect",
+            "string",
+            "否",
+            "期望"
+          ],
+          [
+            "keywords",
+            "string",
+            "否",
+            "关键词"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "title": "case1",
+          "pri": 1,
+          "steps": [
+            {
+              "desc": "步骤1",
+              "expect": "结果1"
+            }
+          ],
+          "type": "feature"
+        }
+      ]
+    },
+    {
+      "number": "2.15.5",
+      "module": "用例",
+      "title": "删除用例",
+      "method": "DELETE",
+      "path": "/testcases/id",
+      "url": "https://www.zentao.net/book/api/729.html",
+      "sha256": "b7799f0f117753db30a703f7d8b889c05606f46386f96995523c53b9889bf066",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.15.6",
+      "module": "用例",
+      "title": "执行用例",
+      "method": "POST",
+      "path": "/testcases/id/results",
+      "url": "https://www.zentao.net/book/api/962.html",
+      "sha256": "d3f8336e5aaff963f572317c97f1669007f12158754e961cb7d900d84c050549",
+      "body": [
+        [
+          [
+            "steps",
+            "array",
+            "是",
+            "用例结果和描述，结果可选\"n/a|fail|blocked|pass\""
+          ]
+        ]
+      ],
+      "query": [
+        [
+          [
+            "testtask",
+            "int",
+            "否",
+            "测试单的ID，默认为0。用于标识测试用例在测试单中执行"
+          ],
+          [
+            "version",
+            "int",
+            "否",
+            "测试用例版本，默认为测试用例的最新版本"
+          ]
+        ]
+      ],
+      "examples": [
+        {
+          "steps": [
+            {
+              "result": "n/a",
+              "real": "忽略"
+            },
+            {
+              "result": "fail",
+              "real": "失败"
+            },
+            {
+              "result": "blocked",
+              "real": "阻塞"
+            },
+            {
+              "result": "pass",
+              "real": "成功"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2.16.1",
+      "module": "测试单",
+      "title": "获取测试单列表",
+      "method": "GET",
+      "path": "/testtasks",
+      "url": "https://www.zentao.net/book/api/730.html",
+      "sha256": "3464ac3c094c447d08c973c0c6e5e094d68f3441039897f4b7c92789f6557e33",
+      "body": [],
+      "query": [
+        [
+          [
+            "page",
+            "String",
+            "",
+            "当前页数，默认为1"
+          ],
+          [
+            "limit",
+            "String",
+            "",
+            "每页测试单数，默认20个"
+          ],
+          [
+            "order",
+            "String",
+            "",
+            "排序，默认 id_desc 按照id倒序"
+          ],
+          [
+            "product",
+            "String",
+            "",
+            "所属产品"
+          ],
+          [
+            "branch",
+            "String",
+            "",
+            "所属分支"
+          ]
+        ]
+      ],
+      "examples": []
+    },
+    {
+      "number": "2.16.2",
+      "module": "测试单",
+      "title": "获取项目的测试单",
+      "method": "GET",
+      "path": "/projects/id/testtasks",
+      "url": "https://www.zentao.net/book/api/731.html",
+      "sha256": "ad4eaff62887b927d63ad897ef2d83a4844288e22dc850bca900e46794b34ee5",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.16.3",
+      "module": "测试单",
+      "title": "获取测试单详情",
+      "method": "GET",
+      "path": "/testtasks/id",
+      "url": "https://www.zentao.net/book/api/732.html",
+      "sha256": "d418ffdf5789a1e2210db03065dd60b6300c34d121c4645ac1547150c7486db9",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.17.1",
+      "module": "反馈",
+      "title": "创建反馈",
+      "method": "POST",
+      "path": "/feedbacks",
+      "url": "https://www.zentao.net/book/api/840.html",
+      "sha256": "f153dd535d601b90ded5fdcee75d2271786c31c4cd1069f02614e07fb25fbcb7",
+      "body": [
+        [
+          [
+            "product",
+            "int",
+            "是",
+            "所属产品"
+          ],
+          [
+            "module",
+            "int",
+            "否",
+            "所属分类"
+          ],
+          [
+            "title",
+            "string",
+            "是",
+            "标题"
+          ],
+          [
+            "type",
+            "string",
+            "否",
+            "类型(story 需求 | task 任务 | bug Bug | todo 代办 | advice 建议) 全新项目集模式还有（issue 问题 | risk 风险 | opportunity 机会）"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "描述"
+          ],
+          [
+            "public",
+            "int",
+            "否",
+            "公开"
+          ],
+          [
+            "notify",
+            "int",
+            "否",
+            "通知"
+          ],
+          [
+            "notifyEmail",
+            "string",
+            "否",
+            "通知邮箱"
+          ],
+          [
+            "feedbackBy",
+            "string",
+            "否",
+            "反馈者"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "product": 2,
+          "title": "create test feedback"
+        }
+      ]
+    },
+    {
+      "number": "2.17.2",
+      "module": "反馈",
+      "title": "指派反馈",
+      "method": "POST",
+      "path": "/feedbacks/id/assign",
+      "url": "https://www.zentao.net/book/api/841.html",
+      "sha256": "b9f1fc94b6c47f0a97d237be25dc706daedbd1910a6ce61bf3fceba0f0178d08",
+      "body": [
+        [
+          [
+            "assignedTo",
+            "string",
+            "否",
+            "指派给，填写用户的account字段"
+          ],
+          [
+            "comment",
+            "string",
+            "否",
+            "备注"
+          ],
+          [
+            "mailto",
+            "string",
+            "否",
+            "抄送给，填写用户的account字段并用“,”分开"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "assignedTo": "admin",
+          "comment": "yes"
+        }
+      ]
+    },
+    {
+      "number": "2.17.3",
+      "module": "反馈",
+      "title": "关闭反馈",
+      "method": "POST",
+      "path": "/feedbacks/id/close",
+      "url": "https://www.zentao.net/book/api/842.html",
+      "sha256": "89dcf9f6ba5d73b8d6ccf621848ca83f1c764ee8e993b9b1f5cad7e8eacf61b8",
+      "body": [
+        [
+          [
+            "closedReason",
+            "string",
+            "否",
+            "关闭原因（commented 已处理 | repeat 重复 | refuse 不予采纳）"
+          ],
+          [
+            "comment",
+            "string",
+            "否",
+            "备注"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "closedReason": "repeat"
+        }
+      ]
+    },
+    {
+      "number": "2.17.4",
+      "module": "反馈",
+      "title": "删除反馈",
+      "method": "DELETE",
+      "path": "/feedbacks/id",
+      "url": "https://www.zentao.net/book/api/843.html",
+      "sha256": "0fffb893456c3b4af5777eefbf24bc3701da5ba4191163db016ef22e3042bc9a",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.17.5",
+      "module": "反馈",
+      "title": "修改反馈",
+      "method": "PUT",
+      "path": "/feedbacks/id",
+      "url": "https://www.zentao.net/book/api/844.html",
+      "sha256": "e6e3c9dd914efc13fac427e9600fa0648536b5570e6d4e304264cad0cd5c5758",
+      "body": [
+        [
+          [
+            "product",
+            "int",
+            "否",
+            "所属产品"
+          ],
+          [
+            "module",
+            "int",
+            "否",
+            "所属分类"
+          ],
+          [
+            "title",
+            "string",
+            "否",
+            "标题"
+          ],
+          [
+            "type",
+            "string",
+            "否",
+            "类型(story 需求 | task 任务 | bug Bug | todo 代办 | advice 建议) 全新项目集模式还有（issue 问题 | risk 风险 | opportunity 机会）"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "描述"
+          ],
+          [
+            "public",
+            "int",
+            "否",
+            "公开"
+          ],
+          [
+            "notify",
+            "int",
+            "否",
+            "通知"
+          ],
+          [
+            "notifyEmail",
+            "string",
+            "否",
+            "通知邮箱"
+          ],
+          [
+            "feedbackBy",
+            "string",
+            "否",
+            "反馈者"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "title": "test",
+          "desc": "edit test"
+        }
+      ]
+    },
+    {
+      "number": "2.17.6",
+      "module": "反馈",
+      "title": "获取反馈详情",
+      "method": "GET",
+      "path": "/feedbacks/id",
+      "url": "https://www.zentao.net/book/api/845.html",
+      "sha256": "a33b3e511f1b3f4b09497161d38d9d4b5d7c4c99a1b225f6b761878aa8b6dead",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.17.7",
+      "module": "反馈",
+      "title": "获取反馈列表",
+      "method": "GET",
+      "path": "/feedbacks",
+      "url": "https://www.zentao.net/book/api/846.html",
+      "sha256": "e07247a0a1b8f0051c5f09f398f89f0deb50d8c221e8256e739ef872dfc5e240",
+      "body": [
+        [
+          [
+            "solution",
+            "string",
+            "否",
+            "反馈处理结果（unclosed 未关闭 | all 全部 | public公开 | tostory 转任务 | totask 转任务 | tobug 转Bug | totodo 转代办 | review 待评审 | assigntome 指派给我）"
+          ],
+          [
+            "orderBy",
+            "string",
+            "否",
+            "排序，默认id_desc；排序字段+下划线+asc/desc"
+          ],
+          [
+            "page",
+            "string",
+            "否",
+            "第几页，默认为1"
+          ],
+          [
+            "limit",
+            "string",
+            "否",
+            "每页反馈数量，默认20"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.18.1",
+      "module": "工单",
+      "title": "获取工单列表",
+      "method": "GET",
+      "path": "/tickets",
+      "url": "https://www.zentao.net/book/api/1266.html",
+      "sha256": "3a0aae529d860aafb2ba6f7c0ce47e58e92eea3ee0a8995b7168cbeff2f1b7a7",
+      "body": [],
+      "query": [
+        [
+          [
+            "browseType",
+            "string",
+            "否",
+            "工单状态（all 所有 | wait 待处理 | doing 处理中 | done 待关闭 | finishedbyme 由我解决 | openedbyme 由我创建 | assignedtome 指派给我）"
+          ],
+          [
+            "param",
+            "String",
+            "否",
+            "模块ID， 默认为0"
+          ],
+          [
+            "orderBy",
+            "string",
+            "否",
+            "排序，默认id_desc；排序字段+下划线+asc/desc"
+          ],
+          [
+            "page",
+            "string",
+            "否",
+            "第几页，默认为1"
+          ],
+          [
+            "limit",
+            "string",
+            "否",
+            "每页工单数量，默认2 0"
+          ]
+        ]
+      ],
+      "examples": []
+    },
+    {
+      "number": "2.18.2",
+      "module": "工单",
+      "title": "获取工单详情",
+      "method": "GET",
+      "path": "/tickets/id",
+      "url": "https://www.zentao.net/book/api/1267.html",
+      "sha256": "688cd15ace2069caa9904d1e10bc7c9e4624dd3680d8c1a5cb021cdaf72de381",
+      "body": [],
+      "query": [],
+      "examples": []
+    },
+    {
+      "number": "2.18.3",
+      "module": "工单",
+      "title": "修改工单",
+      "method": "PUT",
+      "path": "/tickets/id",
+      "url": "https://www.zentao.net/book/api/1268.html",
+      "sha256": "c39d93e36a0e892a97980ad3ef00fbef1c93c61b32b09dab03a389c26450a477",
+      "body": [
+        [
+          [
+            "product",
+            "int",
+            "否",
+            "所属产品"
+          ],
+          [
+            "module",
+            "int",
+            "否",
+            "所属分类"
+          ],
+          [
+            "title",
+            "string",
+            "否",
+            "标题"
+          ],
+          [
+            "type",
+            "string",
+            "否",
+            "工单类型(code 程序报错 | data 数据错误 | stuck 流程卡断 | security 安全问题 | affair 事务)"
+          ],
+          [
+            "desc",
+            "string",
+            "否",
+            "描述"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "title": "test",
+          "desc": "edit test"
+        }
+      ]
+    },
+    {
+      "number": "2.18.4",
+      "module": "工单",
+      "title": "创建工单",
+      "method": "POST",
+      "path": "/tickets",
+      "url": "https://www.zentao.net/book/api/1269.html",
+      "sha256": "2be419d51f4b485e3052abebb0d099e5ba51e82147d69b06ef8fb0e2fd5d0eab",
+      "body": [
+        [
+          [
+            "product",
+            "int",
+            "是",
+            "所属产品"
+          ],
+          [
+            "module",
+            "int",
+            "否",
+            "所属分类"
+          ],
+          [
+            "title",
+            "string",
+            "是",
+            "标题"
+          ],
+          [
+            "type",
+            "string",
+            "否",
+            "工单类型(code 程序报错 | data 数据错误 | stuck 流程卡断 | security 安全问题 | affair 事务)"
+          ]
+        ]
+      ],
+      "query": [],
+      "examples": [
+        {
+          "product": 2,
+          "title": "create test feedback"
+        }
+      ]
+    },
+    {
+      "number": "2.18.5",
+      "module": "工单",
+      "title": "删除工单",
+      "method": "DELETE",
+      "path": "/tickets/id",
+      "url": "https://www.zentao.net/book/api/1270.html",
+      "sha256": "415d94e872c21723136725ab434022c944ad73602a948f0f13f2e76926378719",
+      "body": [],
+      "query": [],
+      "examples": []
+    }
+  ],
+  "buildEditSource": "https://github.com/easysoft/zentaopms/blob/d5bfff8c91cea48018275381e0a127ed6fa5c79f/api/v1/entries/build.php"
+}

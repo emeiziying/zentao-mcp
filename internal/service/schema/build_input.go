@@ -63,6 +63,9 @@ func (s *Service) buildToolInputSchema(ctx context.Context, doc *openapi3.T, op 
 
 			if prop := s.resolveSchema(doc, ct.Schema, visited); prop != nil {
 				schema.WithProperty("payload", prop)
+				if rb.Required {
+					schema.Required = append(schema.Required, "payload")
+				}
 			}
 		}
 	}

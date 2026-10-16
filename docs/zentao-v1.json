@@ -1,0 +1,5639 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "ZenTao REST v1 compatibility",
+    "version": "1.0.0",
+    "description": "97 documented REST v1 endpoints. Availability depends on ZenTao edition, version, permissions and modules. Token creation is for user-owned login, not a default model tool."
+  },
+  "security": [
+    {
+      "Token": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "Token": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Token"
+      }
+    }
+  },
+  "paths": {
+    "/tokens": {
+      "post": {
+        "operationId": "zentao_v1_post_tokens",
+        "summary": "获取Token",
+        "description": "获取Token。来源：https://www.zentao.net/book/api/664.html",
+        "tags": [
+          "Token"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/664.html"
+        },
+        "x-documentation-number": "2.2.1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "account": {
+                    "type": "string",
+                    "description": "登录名"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "密码"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "account",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-readonly": false
+      }
+    },
+    "/departments": {
+      "get": {
+        "operationId": "zentao_v1_get_departments",
+        "summary": "获取部门列表",
+        "description": "获取部门列表。来源：https://www.zentao.net/book/api/964.html",
+        "tags": [
+          "部门"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/964.html"
+        },
+        "x-documentation-number": "2.3.1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/departments/{id}": {
+      "get": {
+        "operationId": "zentao_v1_get_departments_id",
+        "summary": "获取部门详情",
+        "description": "获取部门详情。来源：https://www.zentao.net/book/api/965.html",
+        "tags": [
+          "部门"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/965.html"
+        },
+        "x-documentation-number": "2.3.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/user": {
+      "get": {
+        "operationId": "zentao_current_user",
+        "summary": "获取我的个人信息",
+        "description": "获取我的个人信息。来源：https://www.zentao.net/book/api/665.html",
+        "tags": [
+          "用户"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/665.html"
+        },
+        "x-documentation-number": "2.4.1",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Verified by existing REST v1 adapter."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Verified by existing REST v1 adapter."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Verified by existing REST v1 adapter."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/users": {
+      "get": {
+        "operationId": "zentao_v1_get_users",
+        "summary": "获取用户列表",
+        "description": "获取用户列表。来源：https://www.zentao.net/book/api/666.html",
+        "tags": [
+          "用户"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/666.html"
+        },
+        "x-documentation-number": "2.4.2",
+        "parameters": [
+          {
+            "name": "browse",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "人员类型，默认为 inside（内部人员），可选 inside outside（外部人员），如果填入了其他的内容（比如空）查询所有用户"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "当前页数"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "每页用户数"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "post": {
+        "operationId": "zentao_v1_post_users",
+        "summary": "创建用户",
+        "description": "创建用户。来源：https://www.zentao.net/book/api/838.html",
+        "tags": [
+          "用户"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/838.html"
+        },
+        "x-documentation-number": "2.4.6",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "account": {
+                    "type": "string",
+                    "description": "账号"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "密码"
+                  },
+                  "realname": {
+                    "type": "string",
+                    "description": "真实姓名"
+                  },
+                  "visions": {
+                    "type": "array",
+                    "description": "界面 ['rnd', 'lite']，(综合研发界面 rnd, 迅捷界面 lite)。默认是rnd",
+                    "items": {}
+                  },
+                  "role": {
+                    "type": "string",
+                    "description": "职位， 可以在 'dev', 'qa', 'pm', 'po', 'td', 'pd', 'qd', 'top', 'others' 中选 ，(研发dev，测试qa，项目经理pm，产品经理po，研发主管td，产品主管pd，测试主管qd，高层管理top，其他others)"
+                  },
+                  "group": {
+                    "type": "string",
+                    "description": "权限分组，以英文逗号分隔的字符串，如 '2,3,4'，只有一个权限时填写字符串即可，如 '2'，权限分组列表在 后台-人员管理-权限 中查看，填写分组的编号即可"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "account",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "operationId": "zentao_v1_get_users_id",
+        "summary": "获取用户信息",
+        "description": "获取用户信息。来源：https://www.zentao.net/book/api/667.html",
+        "tags": [
+          "用户"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/667.html"
+        },
+        "x-documentation-number": "2.4.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "put": {
+        "operationId": "zentao_v1_put_users_id",
+        "summary": "修改用户信息",
+        "description": "修改用户信息。来源：https://www.zentao.net/book/api/668.html",
+        "tags": [
+          "用户"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/668.html"
+        },
+        "x-documentation-number": "2.4.4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dept": {
+                    "type": "integer",
+                    "description": "所属部门"
+                  },
+                  "role": {
+                    "type": "string",
+                    "description": "角色"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "description": "手机号"
+                  },
+                  "realname": {
+                    "type": "string",
+                    "description": "真实姓名"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "邮箱"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "description": "电话号码"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "delete": {
+        "operationId": "zentao_v1_delete_users_id",
+        "summary": "删除用户",
+        "description": "删除用户。来源：https://www.zentao.net/book/api/669.html",
+        "tags": [
+          "用户"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/669.html"
+        },
+        "x-documentation-number": "2.4.5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/programs": {
+      "get": {
+        "operationId": "zentao_v1_get_programs",
+        "summary": "获取项目集列表",
+        "description": "获取项目集列表。来源：https://www.zentao.net/book/api/670.html",
+        "tags": [
+          "项目集"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/670.html"
+        },
+        "x-documentation-number": "2.5.1",
+        "parameters": [
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "排序，默认order_asc；排序字段+下划线+asc/desc"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "post": {
+        "operationId": "zentao_v1_post_programs",
+        "summary": "创建项目集",
+        "description": "创建项目集。来源：https://www.zentao.net/book/api/674.html",
+        "tags": [
+          "项目集"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/674.html"
+        },
+        "x-documentation-number": "2.5.5",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "项目名称"
+                  },
+                  "parent": {
+                    "type": "string",
+                    "description": "父项目集，0表示没有父项目集"
+                  },
+                  "PM": {
+                    "type": "string",
+                    "description": "项目负责人"
+                  },
+                  "budget": {
+                    "type": "integer",
+                    "description": "预算金额"
+                  },
+                  "budgetUnit": {
+                    "type": "string",
+                    "description": "预算币种(CNY | USD)"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "项目集描述"
+                  },
+                  "begin": {
+                    "type": "string",
+                    "description": "预计开始日期",
+                    "format": "date"
+                  },
+                  "end": {
+                    "type": "string",
+                    "description": "预计结束日期",
+                    "format": "date"
+                  },
+                  "acl": {
+                    "type": "string",
+                    "description": "访问控制(open 公开 | private 私有)"
+                  },
+                  "whitelist": {
+                    "type": "array",
+                    "description": "白名单，只有acl = private才生效",
+                    "items": {}
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/programs/{id}": {
+      "put": {
+        "operationId": "zentao_v1_put_programs_id",
+        "summary": "修改项目集",
+        "description": "修改项目集。来源：https://www.zentao.net/book/api/671.html",
+        "tags": [
+          "项目集"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/671.html"
+        },
+        "x-documentation-number": "2.5.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "项目名称"
+                  },
+                  "parent": {
+                    "type": "string",
+                    "description": "父项目集，0表示没有父项目集"
+                  },
+                  "PM": {
+                    "type": "string",
+                    "description": "项目负责人"
+                  },
+                  "budget": {
+                    "type": "integer",
+                    "description": "预算金额"
+                  },
+                  "budgetUnit": {
+                    "type": "string",
+                    "description": "预算币种(CNY | USD)"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "项目集描述"
+                  },
+                  "begin": {
+                    "type": "string",
+                    "description": "预计开始日期",
+                    "format": "date"
+                  },
+                  "end": {
+                    "type": "string",
+                    "description": "预计结束日期",
+                    "format": "date"
+                  },
+                  "acl": {
+                    "type": "string",
+                    "description": "访问控制(open 公开 | private 私有)"
+                  },
+                  "whitelist": {
+                    "type": "array",
+                    "description": "白名单",
+                    "items": {}
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "get": {
+        "operationId": "zentao_v1_get_programs_id",
+        "summary": "获取项目集详情",
+        "description": "获取项目集详情。来源：https://www.zentao.net/book/api/672.html",
+        "tags": [
+          "项目集"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/672.html"
+        },
+        "x-documentation-number": "2.5.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "delete": {
+        "operationId": "zentao_v1_delete_programs_id",
+        "summary": "删除项目集",
+        "description": "删除项目集。来源：https://www.zentao.net/book/api/673.html",
+        "tags": [
+          "项目集"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/673.html"
+        },
+        "x-documentation-number": "2.5.4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/products": {
+      "get": {
+        "operationId": "zentao_products",
+        "summary": "获取产品列表",
+        "description": "获取产品列表。来源：https://www.zentao.net/book/api/675.html",
+        "tags": [
+          "产品"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/675.html"
+        },
+        "x-documentation-number": "2.6.1",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Verified by existing REST v1 adapter."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Verified by existing REST v1 adapter."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "post": {
+        "operationId": "zentao_v1_post_products",
+        "summary": "创建产品",
+        "description": "创建产品。来源：https://www.zentao.net/book/api/676.html",
+        "tags": [
+          "产品"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/676.html"
+        },
+        "x-documentation-number": "2.6.2",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "产品名称"
+                  },
+                  "program": {
+                    "type": "integer",
+                    "description": "所属项目集"
+                  },
+                  "code": {
+                    "type": "integer",
+                    "description": "产品代号"
+                  },
+                  "line": {
+                    "type": "integer",
+                    "description": "所属产品线"
+                  },
+                  "PO": {
+                    "description": "产品负责人"
+                  },
+                  "QD": {
+                    "description": "测试负责人"
+                  },
+                  "RD": {
+                    "description": "发布负责人"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "产品类型(normal 正常 | branch 多分支 | )"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "产品描述"
+                  },
+                  "acl": {
+                    "type": "string",
+                    "description": "访问控制（open 公开 | private 私有）"
+                  },
+                  "whitelist": {
+                    "type": "array",
+                    "description": "白名单",
+                    "items": {}
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "name",
+                  "program",
+                  "code"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "operationId": "zentao_v1_get_products_id",
+        "summary": "获取产品详情",
+        "description": "获取产品详情。来源：https://www.zentao.net/book/api/677.html",
+        "tags": [
+          "产品"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/677.html"
+        },
+        "x-documentation-number": "2.6.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "put": {
+        "operationId": "zentao_v1_put_products_id",
+        "summary": "编辑产品",
+        "description": "编辑产品。来源：https://www.zentao.net/book/api/678.html",
+        "tags": [
+          "产品"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/678.html"
+        },
+        "x-documentation-number": "2.6.4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "产品名称"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "产品代号"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "产品类型(normal 正常 | branch 多分支 | platform 多平台)"
+                  },
+                  "line": {
+                    "type": "integer",
+                    "description": "所属产品线"
+                  },
+                  "program": {
+                    "type": "integer",
+                    "description": "所属项目集"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "产品状态(normal 正常 | closed 已关闭)"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "产品描述，富文本"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "delete": {
+        "operationId": "zentao_v1_delete_products_id",
+        "summary": "删除产品",
+        "description": "删除产品。来源：https://www.zentao.net/book/api/679.html",
+        "tags": [
+          "产品"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/679.html"
+        },
+        "x-documentation-number": "2.6.5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/products/{id}/plans": {
+      "get": {
+        "operationId": "zentao_v1_get_products_id_plans",
+        "summary": "获取产品计划列表",
+        "description": "获取产品计划列表。来源：https://www.zentao.net/book/api/680.html",
+        "tags": [
+          "产品计划"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/680.html"
+        },
+        "x-documentation-number": "2.7.1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "post": {
+        "operationId": "zentao_v1_post_products_id_plans",
+        "summary": "创建计划",
+        "description": "创建计划。来源：https://www.zentao.net/book/api/681.html",
+        "tags": [
+          "产品计划"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/681.html"
+        },
+        "x-documentation-number": "2.7.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "integer",
+                    "description": "所属分支"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "计划名称"
+                  },
+                  "begin": {
+                    "type": "string",
+                    "description": "计划开始日期",
+                    "format": "date"
+                  },
+                  "end": {
+                    "type": "string",
+                    "description": "计划结束日期",
+                    "format": "date"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "计划描述"
+                  },
+                  "parent": {
+                    "type": "integer",
+                    "description": "所属父计划"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "title"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/productplans/{id}": {
+      "get": {
+        "operationId": "zentao_v1_get_productplans_id",
+        "summary": "获取计划详情",
+        "description": "获取计划详情。来源：https://www.zentao.net/book/api/682.html",
+        "tags": [
+          "产品计划"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/682.html"
+        },
+        "x-documentation-number": "2.7.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "put": {
+        "operationId": "zentao_v1_put_productplans_id",
+        "summary": "修改计划",
+        "description": "修改计划。来源：https://www.zentao.net/book/api/683.html",
+        "tags": [
+          "产品计划"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/683.html"
+        },
+        "x-documentation-number": "2.7.4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "integer",
+                    "description": "所属分支"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "计划名称"
+                  },
+                  "begin": {
+                    "type": "string",
+                    "description": "计划开始日期",
+                    "format": "date"
+                  },
+                  "end": {
+                    "type": "string",
+                    "description": "计划结束日期",
+                    "format": "date"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "计划描述"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "title"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "delete": {
+        "operationId": "zentao_v1_delete_productplans_id",
+        "summary": "删除计划",
+        "description": "删除计划。来源：https://www.zentao.net/book/api/684.html",
+        "tags": [
+          "产品计划"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/684.html"
+        },
+        "x-documentation-number": "2.7.5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/productplans/{id}/linkstories": {
+      "post": {
+        "operationId": "zentao_v1_post_productplans_id_linkstories",
+        "summary": "产品计划关联需求",
+        "description": "产品计划关联需求。来源：https://www.zentao.net/book/api/685.html",
+        "tags": [
+          "产品计划"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/685.html"
+        },
+        "x-documentation-number": "2.7.6",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "stories": {
+                    "type": "array",
+                    "description": "新增关联的需求，比如 [1, 2]",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/productplans/{id}/unlinkstories": {
+      "post": {
+        "operationId": "zentao_v1_post_productplans_id_unlinkstories",
+        "summary": "产品计划取消关联需求",
+        "description": "产品计划取消关联需求。来源：https://www.zentao.net/book/api/686.html",
+        "tags": [
+          "产品计划"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/686.html"
+        },
+        "x-documentation-number": "2.7.7",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "stories": {
+                    "type": "array",
+                    "description": "取消关联的需求ID，比如 [1, 2]",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "stories"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/productplans/{id}/linkbugs": {
+      "post": {
+        "operationId": "zentao_v1_post_productplans_id_linkbugs",
+        "summary": "产品计划关联Bug",
+        "description": "产品计划关联Bug。来源：https://www.zentao.net/book/api/687.html",
+        "tags": [
+          "产品计划"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/687.html"
+        },
+        "x-documentation-number": "2.7.8",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bugs": {
+                    "type": "array",
+                    "description": "关联的Bug ID，比如 [1, 2]",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "bugs"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/productplans/{id}/unlinkbugs": {
+      "post": {
+        "operationId": "zentao_v1_post_productplans_id_unlinkbugs",
+        "summary": "产品计划取消关联Bug",
+        "description": "产品计划取消关联Bug。来源：https://www.zentao.net/book/api/688.html",
+        "tags": [
+          "产品计划"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/688.html"
+        },
+        "x-documentation-number": "2.7.9",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bugs": {
+                    "type": "array",
+                    "description": "取消关联的Bug ID，比如 [1, 2]",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "bugs"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/products/{id}/releases": {
+      "get": {
+        "operationId": "zentao_v1_get_products_id_releases",
+        "summary": "获取产品发布列表",
+        "description": "获取产品发布列表。来源：https://www.zentao.net/book/api/689.html",
+        "tags": [
+          "发布"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/689.html"
+        },
+        "x-documentation-number": "2.8.1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/projects/{id}/releases": {
+      "get": {
+        "operationId": "zentao_v1_get_projects_id_releases",
+        "summary": "获取项目发布列表",
+        "description": "获取项目发布列表。来源：https://www.zentao.net/book/api/690.html",
+        "tags": [
+          "发布"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/690.html"
+        },
+        "x-documentation-number": "2.8.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/products/{id}/stories": {
+      "get": {
+        "operationId": "zentao_v1_get_products_id_stories",
+        "summary": "获取产品需求列表",
+        "description": "获取产品需求列表。来源：https://www.zentao.net/book/api/691.html",
+        "tags": [
+          "需求"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/691.html"
+        },
+        "x-documentation-number": "2.9.1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "当前页数"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "每页需求数"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "需求类型(allstory 全部|unclosed 未关闭|assignedtome 指给我|openedbyme 我创建|reviewbyme 待我评审|draftstory 草稿|reviewedbyme 我评审|assignedbyme 我指派|closedbyme 我关闭|activestory 激活|changingstory 变更中|reviewingstory 评审中|willclose 待关闭|closedstory 已关闭|feedback 来自反馈)"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/projects/{id}/stories": {
+      "get": {
+        "operationId": "zentao_v1_get_projects_id_stories",
+        "summary": "获取项目需求列表",
+        "description": "获取项目需求列表。来源：https://www.zentao.net/book/api/692.html",
+        "tags": [
+          "需求"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/692.html"
+        },
+        "x-documentation-number": "2.9.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/executions/{id}/stories": {
+      "get": {
+        "operationId": "zentao_v1_get_executions_id_stories",
+        "summary": "获取执行需求列表",
+        "description": "获取执行需求列表。来源：https://www.zentao.net/book/api/693.html",
+        "tags": [
+          "需求"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/693.html"
+        },
+        "x-documentation-number": "2.9.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/stories": {
+      "post": {
+        "operationId": "zentao_v1_post_stories",
+        "summary": "创建需求",
+        "description": "创建需求。来源：https://www.zentao.net/book/api/694.html",
+        "tags": [
+          "需求"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/694.html"
+        },
+        "x-documentation-number": "2.9.4",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "需求标题"
+                  },
+                  "product": {
+                    "type": "integer",
+                    "description": "所属产品"
+                  },
+                  "pri": {
+                    "type": "integer",
+                    "description": "优先级"
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "需求类型"
+                  },
+                  "spec": {
+                    "type": "string",
+                    "description": "需求描述"
+                  },
+                  "verify": {
+                    "type": "string",
+                    "description": "验收标准"
+                  },
+                  "source": {
+                    "type": "string",
+                    "description": "需求来源"
+                  },
+                  "sourceNote": {
+                    "type": "string",
+                    "description": "来源备注"
+                  },
+                  "estimate": {
+                    "type": "number",
+                    "description": "预计工时"
+                  },
+                  "keywords": {
+                    "type": "string",
+                    "description": "关键词"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "title",
+                  "product",
+                  "pri",
+                  "category"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/stories/{id}": {
+      "get": {
+        "operationId": "zentao_v1_get_stories_id",
+        "summary": "获取需求详情",
+        "description": "获取需求详情。来源：https://www.zentao.net/book/api/695.html",
+        "tags": [
+          "需求"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/695.html"
+        },
+        "x-documentation-number": "2.9.5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "put": {
+        "operationId": "zentao_v1_put_stories_id",
+        "summary": "修改需求其他字段",
+        "description": "修改需求其他字段。来源：https://www.zentao.net/book/api/697.html",
+        "tags": [
+          "需求"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/697.html"
+        },
+        "x-documentation-number": "2.9.7",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "module": {
+                    "type": "integer",
+                    "description": "所属模块"
+                  },
+                  "source": {
+                    "type": "string",
+                    "description": "来源"
+                  },
+                  "sourceNote": {
+                    "type": "string",
+                    "description": "来源备注"
+                  },
+                  "pri": {
+                    "type": "integer",
+                    "description": "优先级"
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "类型(feature 功能 | interface 接口 | performance 性能 | safe 安全 | experience 体验 | improve 改进 | other 其他)"
+                  },
+                  "estimate": {
+                    "type": "number",
+                    "description": "预计工时"
+                  },
+                  "keywords": {
+                    "type": "string",
+                    "description": "关键词"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "delete": {
+        "operationId": "zentao_v1_delete_stories_id",
+        "summary": "删除需求",
+        "description": "删除需求。来源：https://www.zentao.net/book/api/698.html",
+        "tags": [
+          "需求"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/698.html"
+        },
+        "x-documentation-number": "2.9.8",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/stories/{id}/change": {
+      "post": {
+        "operationId": "zentao_v1_post_stories_id_change",
+        "summary": "变更需求",
+        "description": "变更需求。来源：https://www.zentao.net/book/api/696.html",
+        "tags": [
+          "需求"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/696.html"
+        },
+        "x-documentation-number": "2.9.6",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "需求标题"
+                  },
+                  "spec": {
+                    "type": "string",
+                    "description": "需求描述"
+                  },
+                  "verify": {
+                    "type": "string",
+                    "description": "验收标准"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/stories/{id}/close": {
+      "post": {
+        "operationId": "zentao_v1_post_stories_id_close",
+        "summary": "关闭需求",
+        "description": "关闭需求。来源：https://www.zentao.net/book/api/1060.html",
+        "tags": [
+          "需求"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1060.html"
+        },
+        "x-documentation-number": "2.9.9",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "closedReason": {
+                    "type": "string",
+                    "description": "关闭原因（done 已完成 | duplicate 重复 | postponed 延期 | willnotdo 不做 | cancel 已取消 | bydesign 设计如此）"
+                  },
+                  "duplicate": {
+                    "type": "integer",
+                    "description": "重复研发需求 当 closedReason 选择为 duplicate 时，传入重复研发需求的 ID"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "description": "备注"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "closedReason"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/projects": {
+      "get": {
+        "operationId": "zentao_v1_get_projects",
+        "summary": "获取项目列表",
+        "description": "获取项目列表。来源：https://www.zentao.net/book/api/699.html",
+        "tags": [
+          "项目"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/699.html"
+        },
+        "x-documentation-number": "2.10.1",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "第几页，默认为1"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "每页项目数量，默认20"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "post": {
+        "operationId": "zentao_v1_post_projects",
+        "summary": "创建项目",
+        "description": "创建项目。来源：https://www.zentao.net/book/api/700.html",
+        "tags": [
+          "项目"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/700.html"
+        },
+        "x-documentation-number": "2.10.2",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "项目名称"
+                  },
+                  "begin": {
+                    "type": "string",
+                    "description": "计划开始日期",
+                    "format": "date"
+                  },
+                  "end": {
+                    "type": "string",
+                    "description": "计划结束日期",
+                    "format": "date"
+                  },
+                  "products": {
+                    "type": "array",
+                    "description": "关联产品，比如 [1, 2]，不能为空。",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "项目编号"
+                  },
+                  "model": {
+                    "type": "string",
+                    "description": "项目模型，默认为scrum"
+                  },
+                  "parent": {
+                    "type": "integer",
+                    "description": "所属项目集，默认为0"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "name",
+                  "begin",
+                  "end",
+                  "products",
+                  "code"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/projects/{id}": {
+      "get": {
+        "operationId": "zentao_v1_get_projects_id",
+        "summary": "获取项目详情",
+        "description": "获取项目详情。来源：https://www.zentao.net/book/api/701.html",
+        "tags": [
+          "项目"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/701.html"
+        },
+        "x-documentation-number": "2.10.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "put": {
+        "operationId": "zentao_v1_put_projects_id",
+        "summary": "修改项目",
+        "description": "修改项目。来源：https://www.zentao.net/book/api/702.html",
+        "tags": [
+          "项目"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/702.html"
+        },
+        "x-documentation-number": "2.10.4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "项目名称"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "项目代号"
+                  },
+                  "parent": {
+                    "type": "integer",
+                    "description": "所属项目集"
+                  },
+                  "PM": {
+                    "type": "integer",
+                    "description": "项目负责人"
+                  },
+                  "budget": {
+                    "type": "integer",
+                    "description": "项目预算金额"
+                  },
+                  "budgetUnit": {
+                    "type": "string",
+                    "description": "预算币种(CNY | USD)"
+                  },
+                  "days": {
+                    "type": "integer",
+                    "description": "可用工作日"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "项目描述"
+                  },
+                  "acl": {
+                    "type": "string",
+                    "description": "访问控制(open 公开 | private 私有)"
+                  },
+                  "whitelist": {
+                    "type": "array",
+                    "description": "白名单",
+                    "items": {}
+                  },
+                  "auth": {
+                    "type": "string",
+                    "description": "权限控制(extend 继承 | reset 重新定义)"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "delete": {
+        "operationId": "zentao_v1_delete_projects_id",
+        "summary": "删除项目",
+        "description": "删除项目。来源：https://www.zentao.net/book/api/703.html",
+        "tags": [
+          "项目"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/703.html"
+        },
+        "x-documentation-number": "2.10.5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/projects/{id}/builds": {
+      "get": {
+        "operationId": "zentao_v1_get_projects_id_builds",
+        "summary": "获取项目版本列表",
+        "description": "获取项目版本列表。来源：https://www.zentao.net/book/api/704.html",
+        "tags": [
+          "版本"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/704.html"
+        },
+        "x-documentation-number": "2.11.1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "post": {
+        "operationId": "zentao_v1_post_projects_id_builds",
+        "summary": "创建版本",
+        "description": "创建版本。来源：https://www.zentao.net/book/api/706.html",
+        "tags": [
+          "版本"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/706.html"
+        },
+        "x-documentation-number": "2.11.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "execution": {
+                    "type": "integer",
+                    "description": "所属执行"
+                  },
+                  "product": {
+                    "type": "integer",
+                    "description": "所属产品"
+                  },
+                  "branch": {
+                    "type": "integer",
+                    "description": "所属分支"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "版本名称"
+                  },
+                  "builder": {
+                    "type": "string",
+                    "description": "构建者"
+                  },
+                  "date": {
+                    "type": "string",
+                    "description": "打包日期",
+                    "format": "date"
+                  },
+                  "scmPath": {
+                    "type": "string",
+                    "description": "源代码地址"
+                  },
+                  "filePath": {
+                    "type": "string",
+                    "description": "下载地址"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "版本描述"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "execution",
+                  "product",
+                  "name",
+                  "builder"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/executions/{id}/builds": {
+      "get": {
+        "operationId": "zentao_v1_get_executions_id_builds",
+        "summary": "获取执行版本列表",
+        "description": "获取执行版本列表。来源：https://www.zentao.net/book/api/705.html",
+        "tags": [
+          "版本"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/705.html"
+        },
+        "x-documentation-number": "2.11.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/builds/{id}": {
+      "get": {
+        "operationId": "zentao_v1_get_builds_id",
+        "summary": "获取版本详情",
+        "description": "获取版本详情。来源：https://www.zentao.net/book/api/707.html",
+        "tags": [
+          "版本"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/707.html"
+        },
+        "x-documentation-number": "2.11.4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "put": {
+        "operationId": "zentao_v1_put_builds_id",
+        "summary": "修改版本",
+        "description": "修改版本。来源：https://www.zentao.net/book/api/708.html 请求字段补自官方 api/v1/entries/build.php put()：https://github.com/easysoft/zentaopms/blob/d5bfff8c91cea48018275381e0a127ed6fa5c79f/api/v1/entries/build.php",
+        "tags": [
+          "版本"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/708.html"
+        },
+        "x-documentation-number": "2.11.5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "execution": {
+                    "type": "integer",
+                    "description": "Official buildEntry::put accepted field"
+                  },
+                  "product": {
+                    "type": "integer",
+                    "description": "Official buildEntry::put accepted field"
+                  },
+                  "branch": {
+                    "type": "integer",
+                    "description": "Official buildEntry::put accepted field"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Official buildEntry::put accepted field"
+                  },
+                  "builder": {
+                    "type": "string",
+                    "description": "Official buildEntry::put accepted field"
+                  },
+                  "date": {
+                    "type": "string",
+                    "description": "Official buildEntry::put accepted field",
+                    "format": "date"
+                  },
+                  "scmPath": {
+                    "type": "string",
+                    "description": "Official buildEntry::put accepted field"
+                  },
+                  "filePath": {
+                    "type": "string",
+                    "description": "Official buildEntry::put accepted field"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "Official buildEntry::put accepted field"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "delete": {
+        "operationId": "zentao_v1_delete_builds_id",
+        "summary": "删除版本",
+        "description": "删除版本。来源：https://www.zentao.net/book/api/709.html",
+        "tags": [
+          "版本"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/709.html"
+        },
+        "x-documentation-number": "2.11.6",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/projects/{id}/executions": {
+      "get": {
+        "operationId": "zentao_v1_get_projects_id_executions",
+        "summary": "获取项目的执行列表",
+        "description": "获取项目的执行列表。来源：https://www.zentao.net/book/api/710.html",
+        "tags": [
+          "执行"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/710.html"
+        },
+        "x-documentation-number": "2.12.1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "post": {
+        "operationId": "zentao_v1_post_projects_id_executions",
+        "summary": "创建执行",
+        "description": "创建执行。来源：https://www.zentao.net/book/api/711.html",
+        "tags": [
+          "执行"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/711.html"
+        },
+        "x-documentation-number": "2.12.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "project": {
+                    "type": "integer",
+                    "description": "所属项目"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "执行名称"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "执行代号"
+                  },
+                  "begin": {
+                    "type": "string",
+                    "description": "计划开始日期",
+                    "format": "date"
+                  },
+                  "end": {
+                    "type": "string",
+                    "description": "计划结束日期",
+                    "format": "date"
+                  },
+                  "days": {
+                    "type": "integer",
+                    "description": "可用工作日"
+                  },
+                  "lifetime": {
+                    "type": "string",
+                    "description": "类型(short 短期 | long 长期 | ops 运维)"
+                  },
+                  "PO": {
+                    "type": "string",
+                    "description": "产品负责人"
+                  },
+                  "PM": {
+                    "type": "string",
+                    "description": "迭代负责人"
+                  },
+                  "QD": {
+                    "type": "string",
+                    "description": "测试负责人"
+                  },
+                  "RD": {
+                    "type": "string",
+                    "description": "发布负责人"
+                  },
+                  "teamMembers": {
+                    "type": "array",
+                    "description": "团队成员 [\"admin\"]",
+                    "items": {}
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "迭代描述"
+                  },
+                  "acl": {
+                    "type": "string",
+                    "description": "访问控制(private 私有 | open 继承项目权限)"
+                  },
+                  "whitelist": {
+                    "type": "array",
+                    "description": "白名单",
+                    "items": {}
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "project",
+                  "name",
+                  "code",
+                  "begin",
+                  "end"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/executions/{id}": {
+      "get": {
+        "operationId": "zentao_v1_get_executions_id",
+        "summary": "查看执行详情",
+        "description": "查看执行详情。来源：https://www.zentao.net/book/api/712.html",
+        "tags": [
+          "执行"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/712.html"
+        },
+        "x-documentation-number": "2.12.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "put": {
+        "operationId": "zentao_v1_put_executions_id",
+        "summary": "修改执行",
+        "description": "修改执行。来源：https://www.zentao.net/book/api/713.html",
+        "tags": [
+          "执行"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/713.html"
+        },
+        "x-documentation-number": "2.12.4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "project": {
+                    "type": "integer",
+                    "description": "所属项目"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "执行名称"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "执行代号"
+                  },
+                  "begin": {
+                    "type": "string",
+                    "description": "计划开始日期",
+                    "format": "date"
+                  },
+                  "end": {
+                    "type": "string",
+                    "description": "计划结束日期",
+                    "format": "date"
+                  },
+                  "days": {
+                    "type": "integer",
+                    "description": "可用工作日"
+                  },
+                  "lifetime": {
+                    "type": "string",
+                    "description": "类型(short 短期 | long 长期 | ops 运维)"
+                  },
+                  "PO": {
+                    "type": "string",
+                    "description": "产品负责人"
+                  },
+                  "PM": {
+                    "type": "string",
+                    "description": "迭代负责人"
+                  },
+                  "QD": {
+                    "type": "string",
+                    "description": "测试负责人"
+                  },
+                  "RD": {
+                    "type": "string",
+                    "description": "发布负责人"
+                  },
+                  "teamMembers": {
+                    "type": "array",
+                    "description": "团队成员 [\"admin\"]",
+                    "items": {}
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "迭代描述"
+                  },
+                  "acl": {
+                    "type": "string",
+                    "description": "访问控制(private 私有 | open 继承项目权限)"
+                  },
+                  "whitelist": {
+                    "type": "array",
+                    "description": "白名单",
+                    "items": {}
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "project",
+                  "name",
+                  "code",
+                  "begin",
+                  "end"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "delete": {
+        "operationId": "zentao_v1_delete_executions_id",
+        "summary": "删除执行",
+        "description": "删除执行。来源：https://www.zentao.net/book/api/714.html",
+        "tags": [
+          "执行"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/714.html"
+        },
+        "x-documentation-number": "2.12.5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/executions/{id}/tasks": {
+      "get": {
+        "operationId": "zentao_v1_get_executions_id_tasks",
+        "summary": "获取执行任务列表",
+        "description": "获取执行任务列表。来源：https://www.zentao.net/book/api/715.html",
+        "tags": [
+          "任务"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/715.html"
+        },
+        "x-documentation-number": "2.13.1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "post": {
+        "operationId": "zentao_v1_post_executions_id_tasks",
+        "summary": "创建任务",
+        "description": "创建任务。来源：https://www.zentao.net/book/api/716.html",
+        "tags": [
+          "任务"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/716.html"
+        },
+        "x-documentation-number": "2.13.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "module": {
+                    "type": "integer",
+                    "description": "所属模块"
+                  },
+                  "story": {
+                    "type": "integer",
+                    "description": "关联需求"
+                  },
+                  "fromBug": {
+                    "type": "integer",
+                    "description": "来自于Bug"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "任务名称"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "任务类型(design 设计 | devel 开发 | request 需求 | test 测试 | study 研究 | discuss 讨论 | ui 界面 | affair 事务 | misc 其他)"
+                  },
+                  "assignedTo": {
+                    "type": "string",
+                    "description": "指派给"
+                  },
+                  "pri": {
+                    "type": "integer",
+                    "description": "优先级"
+                  },
+                  "estimate": {
+                    "type": "number",
+                    "description": "预计工时"
+                  },
+                  "estStarted": {
+                    "type": "string",
+                    "description": "预计开始日期",
+                    "format": "date"
+                  },
+                  "deadline": {
+                    "type": "string",
+                    "description": "预计结束日期",
+                    "format": "date"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "name",
+                  "type",
+                  "assignedTo",
+                  "estStarted",
+                  "deadline"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/tasks/{id}": {
+      "get": {
+        "operationId": "zentao_task_detail",
+        "summary": "获取任务详情",
+        "description": "获取任务详情。来源：https://www.zentao.net/book/api/717.html",
+        "tags": [
+          "任务"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/717.html"
+        },
+        "x-documentation-number": "2.13.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "put": {
+        "operationId": "zentao_v1_put_tasks_id",
+        "summary": "修改任务",
+        "description": "修改任务。来源：https://www.zentao.net/book/api/718.html",
+        "tags": [
+          "任务"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/718.html"
+        },
+        "x-documentation-number": "2.13.4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "module": {
+                    "type": "integer",
+                    "description": "所属模块"
+                  },
+                  "story": {
+                    "type": "integer",
+                    "description": "关联需求"
+                  },
+                  "fromBug": {
+                    "type": "integer",
+                    "description": "来自于Bug"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "任务名称"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "任务类型(design 设计 | devel 开发 | request 需求 | test 测试 | study 研究 | discuss 讨论 | ui 界面 | affair 事务 | misc 其他)"
+                  },
+                  "assignedTo": {
+                    "type": "string",
+                    "description": "指派给"
+                  },
+                  "pri": {
+                    "type": "integer",
+                    "description": "优先级"
+                  },
+                  "estimate": {
+                    "type": "number",
+                    "description": "预计工时"
+                  },
+                  "estStarted": {
+                    "type": "string",
+                    "description": "预计开始日期",
+                    "format": "date"
+                  },
+                  "deadline": {
+                    "type": "string",
+                    "description": "预计结束日期",
+                    "format": "date"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "delete": {
+        "operationId": "zentao_v1_delete_tasks_id",
+        "summary": "删除任务",
+        "description": "删除任务。来源：https://www.zentao.net/book/api/719.html",
+        "tags": [
+          "任务"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/719.html"
+        },
+        "x-documentation-number": "2.13.5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/tasks/{id}/start": {
+      "post": {
+        "operationId": "zentao_v1_post_tasks_id_start",
+        "summary": "开始任务",
+        "description": "开始任务。来源：https://www.zentao.net/book/api/967.html",
+        "tags": [
+          "任务"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/967.html"
+        },
+        "x-documentation-number": "2.13.6",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "assignedTo": {
+                    "type": "string",
+                    "description": "指派给"
+                  },
+                  "realStarted": {
+                    "type": "string",
+                    "description": "实际开始",
+                    "format": "date"
+                  },
+                  "consumed": {
+                    "type": "integer",
+                    "description": "总计消耗"
+                  },
+                  "left": {
+                    "type": "integer",
+                    "description": "预计剩余"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "description": "备注"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "left"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/tasks/{id}/pause": {
+      "post": {
+        "operationId": "zentao_v1_post_tasks_id_pause",
+        "summary": "暂停任务",
+        "description": "暂停任务。来源：https://www.zentao.net/book/api/968.html",
+        "tags": [
+          "任务"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/968.html"
+        },
+        "x-documentation-number": "2.13.7",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "comment": {
+                    "type": "string",
+                    "description": "备注"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/tasks/{id}/restart": {
+      "post": {
+        "operationId": "zentao_v1_post_tasks_id_restart",
+        "summary": "继续任务",
+        "description": "继续任务。来源：https://www.zentao.net/book/api/969.html",
+        "tags": [
+          "任务"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/969.html"
+        },
+        "x-documentation-number": "2.13.8",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "assignedTo": {
+                    "type": "string",
+                    "description": "指派给"
+                  },
+                  "realStarted": {
+                    "type": "string",
+                    "description": "实际开始",
+                    "format": "date"
+                  },
+                  "consumed": {
+                    "type": "integer",
+                    "description": "总计消耗"
+                  },
+                  "left": {
+                    "type": "integer",
+                    "description": "预计剩余"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "description": "备注"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "left"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/tasks/{id}/finish": {
+      "post": {
+        "operationId": "zentao_v1_post_tasks_id_finish",
+        "summary": "完成任务",
+        "description": "完成任务。来源：https://www.zentao.net/book/api/970.html",
+        "tags": [
+          "任务"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/970.html"
+        },
+        "x-documentation-number": "2.13.9",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "assignedTo": {
+                    "type": "string",
+                    "description": "指派给，如果没填会使用任务当前的指派人"
+                  },
+                  "currentConsumed": {
+                    "type": "integer",
+                    "description": "本次消耗"
+                  },
+                  "realStarted": {
+                    "type": "string",
+                    "description": "实际开始，如果没填会使用任务开始(继续)时填写的实际开始时间",
+                    "format": "date"
+                  },
+                  "finishedDate": {
+                    "type": "string",
+                    "description": "完成时间",
+                    "format": "date"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "description": "备注"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "currentConsumed",
+                  "finishedDate"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/tasks/{id}/close": {
+      "post": {
+        "operationId": "zentao_v1_post_tasks_id_close",
+        "summary": "关闭任务",
+        "description": "关闭任务。来源：https://www.zentao.net/book/api/1200.html",
+        "tags": [
+          "任务"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1200.html"
+        },
+        "x-documentation-number": "2.13.10",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "comment": {
+                    "type": "string",
+                    "description": "备注"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/tasks/{id}/estimate": {
+      "post": {
+        "operationId": "zentao_v1_post_tasks_id_estimate",
+        "summary": "添加任务日志",
+        "description": "添加任务日志。来源：https://www.zentao.net/book/api/1198.html 日志格式：20.7之前使用id/objectID/dates/work/consumed/left/objectType；20.7及以后使用date/work/consumed/left。请选择对应版本，不自动重试写入。",
+        "tags": [
+          "任务"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1198.html"
+        },
+        "x-documentation-number": "2.13.11",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "array",
+                        "description": "从0自增，表示记录几条日志，如3条日志则填入 [0,1,2]",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "objectID": {
+                        "type": "array",
+                        "description": "任务ID",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "dates": {
+                        "type": "array",
+                        "description": "日期",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "work": {
+                        "type": "array",
+                        "description": "工作内容",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "consumed": {
+                        "type": "array",
+                        "description": "消耗",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "left": {
+                        "type": "array",
+                        "description": "剩余",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "objectType": {
+                        "type": "array",
+                        "description": "对象类型，此处填入task",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "additionalProperties": true,
+                    "required": [
+                      "id",
+                      "objectID",
+                      "dates",
+                      "work",
+                      "consumed",
+                      "left",
+                      "objectType"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "date": {
+                        "type": "array",
+                        "description": "日期",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "work": {
+                        "type": "array",
+                        "description": "工作内容",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "consumed": {
+                        "type": "array",
+                        "description": "消耗",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "left": {
+                        "type": "array",
+                        "description": "剩余",
+                        "items": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "additionalProperties": true,
+                    "required": [
+                      "date",
+                      "work",
+                      "consumed",
+                      "left"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "get": {
+        "operationId": "zentao_v1_get_tasks_id_estimate",
+        "summary": "获取任务日志",
+        "description": "获取任务日志。来源：https://www.zentao.net/book/api/1199.html",
+        "tags": [
+          "任务"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1199.html"
+        },
+        "x-documentation-number": "2.13.12",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/products/{id}/bugs": {
+      "get": {
+        "operationId": "zentao_v1_get_products_id_bugs",
+        "summary": "获取产品Bug列表",
+        "description": "获取产品Bug列表。来源：https://www.zentao.net/book/api/720.html",
+        "tags": [
+          "Bug"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/720.html"
+        },
+        "x-documentation-number": "2.14.1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "post": {
+        "operationId": "zentao_v1_post_products_id_bugs",
+        "summary": "创建Bug",
+        "description": "创建Bug。来源：https://www.zentao.net/book/api/721.html",
+        "tags": [
+          "Bug"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/721.html"
+        },
+        "x-documentation-number": "2.14.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "integer",
+                    "description": "所属分支"
+                  },
+                  "module": {
+                    "type": "integer",
+                    "description": "所属模块"
+                  },
+                  "execution": {
+                    "type": "integer",
+                    "description": "所属执行"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "Bug标题"
+                  },
+                  "keywords": {
+                    "type": "string",
+                    "description": "关键词"
+                  },
+                  "severity": {
+                    "type": "integer",
+                    "description": "严重程度"
+                  },
+                  "pri": {
+                    "type": "integer",
+                    "description": "优先级"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "Bug类型(codeerror 代码错误 | config 配置相关 | install 安装部署 | security 安全相关 | performance 性能问题 | standard 标准规范 | automation |测试脚本 | designdefect 设计缺陷 | others 其他)"
+                  },
+                  "os": {
+                    "type": "string",
+                    "description": "操作系统"
+                  },
+                  "browser": {
+                    "type": "string",
+                    "description": "浏览器"
+                  },
+                  "steps": {
+                    "type": "string",
+                    "description": "重现步骤"
+                  },
+                  "task": {
+                    "type": "integer",
+                    "description": "相关任务"
+                  },
+                  "story": {
+                    "type": "integer",
+                    "description": "相关需求"
+                  },
+                  "deadline": {
+                    "type": "string",
+                    "description": "截止日期",
+                    "format": "date"
+                  },
+                  "openedBuild": {
+                    "type": "array",
+                    "description": "影响版本",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "title",
+                  "severity",
+                  "pri",
+                  "type"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/bugs/{id}": {
+      "get": {
+        "operationId": "zentao_v1_get_bugs_id",
+        "summary": "获取Bug详情",
+        "description": "获取Bug详情。来源：https://www.zentao.net/book/api/722.html",
+        "tags": [
+          "Bug"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/722.html"
+        },
+        "x-documentation-number": "2.14.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "put": {
+        "operationId": "zentao_v1_put_bugs_id",
+        "summary": "修改Bug",
+        "description": "修改Bug。来源：https://www.zentao.net/book/api/723.html",
+        "tags": [
+          "Bug"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/723.html"
+        },
+        "x-documentation-number": "2.14.4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "integer",
+                    "description": "所属分支"
+                  },
+                  "module": {
+                    "type": "integer",
+                    "description": "所属模块"
+                  },
+                  "execution": {
+                    "type": "integer",
+                    "description": "所属执行"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "Bug标题"
+                  },
+                  "keywords": {
+                    "type": "string",
+                    "description": "关键词"
+                  },
+                  "severity": {
+                    "type": "integer",
+                    "description": "严重程度"
+                  },
+                  "pri": {
+                    "type": "integer",
+                    "description": "优先级"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "Bug类型(codeerror 代码错误 | config 配置相关 | install 安装部署 | security 安全相关 | performance 性能问题 | standard 标准规范 | automation |测试脚本 | designdefect 设计缺陷 | others 其他)"
+                  },
+                  "os": {
+                    "type": "string",
+                    "description": "操作系统"
+                  },
+                  "browser": {
+                    "type": "string",
+                    "description": "浏览器"
+                  },
+                  "steps": {
+                    "type": "string",
+                    "description": "重现步骤"
+                  },
+                  "task": {
+                    "type": "integer",
+                    "description": "相关任务"
+                  },
+                  "story": {
+                    "type": "integer",
+                    "description": "相关需求"
+                  },
+                  "deadline": {
+                    "type": "string",
+                    "description": "截止日期",
+                    "format": "date"
+                  },
+                  "openedBuild": {
+                    "type": "array",
+                    "description": "影响版本",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "title",
+                  "severity",
+                  "pri",
+                  "type"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "delete": {
+        "operationId": "zentao_v1_delete_bugs_id",
+        "summary": "删除Bug",
+        "description": "删除Bug。来源：https://www.zentao.net/book/api/724.html",
+        "tags": [
+          "Bug"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/724.html"
+        },
+        "x-documentation-number": "2.14.5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/bugs/{id}/confirm": {
+      "post": {
+        "operationId": "zentao_v1_post_bugs_id_confirm",
+        "summary": "确认Bug",
+        "description": "确认Bug。来源：https://www.zentao.net/book/api/1120.html",
+        "tags": [
+          "Bug"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1120.html"
+        },
+        "x-documentation-number": "2.14.6",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "assignedTo": {
+                    "type": "string",
+                    "description": "指派给"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "Bug类型(co deerror 代码错误 | config 配置相关 | install 安装部署 | security 安全相关 | performance 性能问题 | standard 标准规范 | automation |测试脚本 | designdefect 设计缺陷 | others 其他)"
+                  },
+                  "mailto": {
+                    "type": "array",
+                    "description": "抄送给",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "comment": {
+                    "type": "string",
+                    "description": "备注"
+                  },
+                  "pri": {
+                    "type": "integer",
+                    "description": "优先级"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/bugs/{id}/close": {
+      "post": {
+        "operationId": "zentao_v1_post_bugs_id_close",
+        "summary": "关闭Bug",
+        "description": "关闭Bug。来源：https://www.zentao.net/book/api/1121.html",
+        "tags": [
+          "Bug"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1121.html"
+        },
+        "x-documentation-number": "2.14.7",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "comment": {
+                    "type": "string",
+                    "description": "备注"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/bugs/{id}/active": {
+      "post": {
+        "operationId": "zentao_v1_post_bugs_id_active",
+        "summary": "激活Bug",
+        "description": "激活Bug。来源：https://www.zentao.net/book/api/1142.html",
+        "tags": [
+          "Bug"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1142.html"
+        },
+        "x-documentation-number": "2.14.8",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "assignedTo": {
+                    "type": "string",
+                    "description": "指派给"
+                  },
+                  "openedBuild": {
+                    "type": "array",
+                    "description": "影响版本",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "comment": {
+                    "type": "string",
+                    "description": "备注"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/bugs/{id}/resolve": {
+      "post": {
+        "operationId": "zentao_v1_post_bugs_id_resolve",
+        "summary": "解决Bug",
+        "description": "解决Bug。来源：https://www.zentao.net/book/api/1181.html",
+        "tags": [
+          "Bug"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1181.html"
+        },
+        "x-documentation-number": "2.14.9",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "resolution": {
+                    "type": "string",
+                    "description": "解决方案(bydesign 设计如此 | duplicate 重复bug | external 外部原因 | fixed 已解决 | notrepro 无法重现 | postponed 延期处理 | willnotfix 不予解决 | tostory 转需求)"
+                  },
+                  "duplicateBug": {
+                    "type": "integer",
+                    "description": "重复Bug ID， 当 resolution 选择 duplicate 时 ，应传入此参数"
+                  },
+                  "resolvedBuild": {
+                    "anyOf": [
+                      {
+                        "type": "integer"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ],
+                    "description": "解决版本，传入版本的ID，或者传入 trunk（主干）"
+                  },
+                  "resolvedDate": {
+                    "type": "string",
+                    "description": "解决时间"
+                  },
+                  "assignedTo": {
+                    "type": "string",
+                    "description": "指派给"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "description": "备注"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "resolution"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/products/{id}/testcases": {
+      "get": {
+        "operationId": "zentao_v1_get_products_id_testcases",
+        "summary": "获取产品用例列表",
+        "description": "获取产品用例列表。来源：https://www.zentao.net/book/api/725.html",
+        "tags": [
+          "用例"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/725.html"
+        },
+        "x-documentation-number": "2.15.1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "post": {
+        "operationId": "zentao_v1_post_products_id_testcases",
+        "summary": "创建用例",
+        "description": "创建用例。来源：https://www.zentao.net/book/api/726.html",
+        "tags": [
+          "用例"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/726.html"
+        },
+        "x-documentation-number": "2.15.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "integer",
+                    "description": "所属分支"
+                  },
+                  "module": {
+                    "type": "integer",
+                    "description": "所属模块"
+                  },
+                  "story": {
+                    "type": "integer",
+                    "description": "所属需求"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "用例标题"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "用例类型(feature 功能测试 | performance 性能测试 | config 配置相关 | install 安装部署 | security 安全相关 | interface 接口测试 | unit 单元测试 | other 其他)"
+                  },
+                  "stage": {
+                    "type": "string",
+                    "description": "适用阶段(unittest 单元测试阶段 | feature 功能测试阶段 | intergrate 集成测试阶段 | system 系统测试阶段 | smoke 冒烟测试阶段 | bvt 版本验证阶段)"
+                  },
+                  "precondition": {
+                    "type": "string",
+                    "description": "前置条件"
+                  },
+                  "pri": {
+                    "type": "integer",
+                    "description": "优先级"
+                  },
+                  "steps": {
+                    "type": "array",
+                    "description": "用例步骤",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "desc": {
+                          "type": "string",
+                          "description": "步骤"
+                        },
+                        "expect": {
+                          "type": "string",
+                          "description": "期望"
+                        }
+                      },
+                      "required": [
+                        "desc",
+                        "expect"
+                      ]
+                    }
+                  },
+                  "keywords": {
+                    "type": "string",
+                    "description": "关键词"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "title",
+                  "type",
+                  "steps"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/testcases/{id}": {
+      "get": {
+        "operationId": "zentao_v1_get_testcases_id",
+        "summary": "获取用例详情",
+        "description": "获取用例详情。来源：https://www.zentao.net/book/api/727.html",
+        "tags": [
+          "用例"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/727.html"
+        },
+        "x-documentation-number": "2.15.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "put": {
+        "operationId": "zentao_v1_put_testcases_id",
+        "summary": "修改用例",
+        "description": "修改用例。来源：https://www.zentao.net/book/api/728.html",
+        "tags": [
+          "用例"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/728.html"
+        },
+        "x-documentation-number": "2.15.4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "integer",
+                    "description": "所属分支"
+                  },
+                  "module": {
+                    "type": "integer",
+                    "description": "所属模块"
+                  },
+                  "story": {
+                    "type": "integer",
+                    "description": "所属需求"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "用例标题"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "用例类型(feature 功能测试 | performance 性能测试 | config 配置相关 | install 安装部署 | security 安全相关 | interface 接口测试 | unit 单元测试 | other 其他)"
+                  },
+                  "stage": {
+                    "type": "string",
+                    "description": "适用阶段(unittest 单元测试阶段 | feature 功能测试阶段 | intergrate 集成测试阶段 | system 系统测试阶段 | smoke 冒烟测试阶段 | bvt 版本验证阶段)"
+                  },
+                  "precondition": {
+                    "type": "string",
+                    "description": "前置条件"
+                  },
+                  "pri": {
+                    "type": "integer",
+                    "description": "优先级"
+                  },
+                  "steps": {
+                    "type": "array",
+                    "description": "用例步骤",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "desc": {
+                          "type": "string",
+                          "description": "步骤"
+                        },
+                        "expect": {
+                          "type": "string",
+                          "description": "期望"
+                        }
+                      }
+                    }
+                  },
+                  "keywords": {
+                    "type": "string",
+                    "description": "关键词"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "delete": {
+        "operationId": "zentao_v1_delete_testcases_id",
+        "summary": "删除用例",
+        "description": "删除用例。来源：https://www.zentao.net/book/api/729.html",
+        "tags": [
+          "用例"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/729.html"
+        },
+        "x-documentation-number": "2.15.5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/testcases/{id}/results": {
+      "post": {
+        "operationId": "zentao_v1_post_testcases_id_results",
+        "summary": "执行用例",
+        "description": "执行用例。来源：https://www.zentao.net/book/api/962.html",
+        "tags": [
+          "用例"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/962.html"
+        },
+        "x-documentation-number": "2.15.6",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "testtask",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "测试单的ID，默认为0。用于标识测试用例在测试单中执行"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "测试用例版本，默认为测试用例的最新版本"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "steps": {
+                    "type": "array",
+                    "description": "用例结果和描述，结果可选\"n/a|fail|blocked|pass\"",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "result": {
+                          "type": "string"
+                        },
+                        "real": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "steps"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/testtasks": {
+      "get": {
+        "operationId": "zentao_v1_get_testtasks",
+        "summary": "获取测试单列表",
+        "description": "获取测试单列表。来源：https://www.zentao.net/book/api/730.html",
+        "tags": [
+          "测试单"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/730.html"
+        },
+        "x-documentation-number": "2.16.1",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "当前页数，默认为1"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "每页测试单数，默认20个"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "排序，默认 id_desc 按照id倒序"
+            }
+          },
+          {
+            "name": "product",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "所属产品"
+            }
+          },
+          {
+            "name": "branch",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "所属分支"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/projects/{id}/testtasks": {
+      "get": {
+        "operationId": "zentao_v1_get_projects_id_testtasks",
+        "summary": "获取项目的测试单",
+        "description": "获取项目的测试单。来源：https://www.zentao.net/book/api/731.html",
+        "tags": [
+          "测试单"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/731.html"
+        },
+        "x-documentation-number": "2.16.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/testtasks/{id}": {
+      "get": {
+        "operationId": "zentao_v1_get_testtasks_id",
+        "summary": "获取测试单详情",
+        "description": "获取测试单详情。来源：https://www.zentao.net/book/api/732.html",
+        "tags": [
+          "测试单"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/732.html"
+        },
+        "x-documentation-number": "2.16.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/feedbacks": {
+      "post": {
+        "operationId": "zentao_v1_post_feedbacks",
+        "summary": "创建反馈",
+        "description": "创建反馈。来源：https://www.zentao.net/book/api/840.html",
+        "tags": [
+          "反馈"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/840.html"
+        },
+        "x-documentation-number": "2.17.1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "product": {
+                    "type": "integer",
+                    "description": "所属产品"
+                  },
+                  "module": {
+                    "type": "integer",
+                    "description": "所属分类"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "标题"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "类型(story 需求 | task 任务 | bug Bug | todo 代办 | advice 建议) 全新项目集模式还有（issue 问题 | risk 风险 | opportunity 机会）"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "描述"
+                  },
+                  "public": {
+                    "type": "integer",
+                    "description": "公开"
+                  },
+                  "notify": {
+                    "type": "integer",
+                    "description": "通知"
+                  },
+                  "notifyEmail": {
+                    "type": "string",
+                    "description": "通知邮箱"
+                  },
+                  "feedbackBy": {
+                    "type": "string",
+                    "description": "反馈者"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "product",
+                  "title"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "get": {
+        "operationId": "zentao_v1_get_feedbacks",
+        "summary": "获取反馈列表",
+        "description": "获取反馈列表。来源：https://www.zentao.net/book/api/846.html",
+        "tags": [
+          "反馈"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/846.html"
+        },
+        "x-documentation-number": "2.17.7",
+        "parameters": [
+          {
+            "name": "solution",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "反馈处理结果（unclosed 未关闭 | all 全部 | public公开 | tostory 转任务 | totask 转任务 | tobug 转Bug | totodo 转代办 | review 待评审 | assigntome 指派给我）"
+            }
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "排序，默认id_desc；排序字段+下划线+asc/desc"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "第几页，默认为1"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "每页反馈数量，默认20"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/feedbacks/{id}/assign": {
+      "post": {
+        "operationId": "zentao_v1_post_feedbacks_id_assign",
+        "summary": "指派反馈",
+        "description": "指派反馈。来源：https://www.zentao.net/book/api/841.html",
+        "tags": [
+          "反馈"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/841.html"
+        },
+        "x-documentation-number": "2.17.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "assignedTo": {
+                    "type": "string",
+                    "description": "指派给，填写用户的account字段"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "description": "备注"
+                  },
+                  "mailto": {
+                    "type": "string",
+                    "description": "抄送给，填写用户的account字段并用“,”分开"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/feedbacks/{id}/close": {
+      "post": {
+        "operationId": "zentao_v1_post_feedbacks_id_close",
+        "summary": "关闭反馈",
+        "description": "关闭反馈。来源：https://www.zentao.net/book/api/842.html",
+        "tags": [
+          "反馈"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/842.html"
+        },
+        "x-documentation-number": "2.17.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "closedReason": {
+                    "type": "string",
+                    "description": "关闭原因（commented 已处理 | repeat 重复 | refuse 不予采纳）"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "description": "备注"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/feedbacks/{id}": {
+      "delete": {
+        "operationId": "zentao_v1_delete_feedbacks_id",
+        "summary": "删除反馈",
+        "description": "删除反馈。来源：https://www.zentao.net/book/api/843.html",
+        "tags": [
+          "反馈"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/843.html"
+        },
+        "x-documentation-number": "2.17.4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "put": {
+        "operationId": "zentao_v1_put_feedbacks_id",
+        "summary": "修改反馈",
+        "description": "修改反馈。来源：https://www.zentao.net/book/api/844.html",
+        "tags": [
+          "反馈"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/844.html"
+        },
+        "x-documentation-number": "2.17.5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "product": {
+                    "type": "integer",
+                    "description": "所属产品"
+                  },
+                  "module": {
+                    "type": "integer",
+                    "description": "所属分类"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "标题"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "类型(story 需求 | task 任务 | bug Bug | todo 代办 | advice 建议) 全新项目集模式还有（issue 问题 | risk 风险 | opportunity 机会）"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "描述"
+                  },
+                  "public": {
+                    "type": "integer",
+                    "description": "公开"
+                  },
+                  "notify": {
+                    "type": "integer",
+                    "description": "通知"
+                  },
+                  "notifyEmail": {
+                    "type": "string",
+                    "description": "通知邮箱"
+                  },
+                  "feedbackBy": {
+                    "type": "string",
+                    "description": "反馈者"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "get": {
+        "operationId": "zentao_v1_get_feedbacks_id",
+        "summary": "获取反馈详情",
+        "description": "获取反馈详情。来源：https://www.zentao.net/book/api/845.html",
+        "tags": [
+          "反馈"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/845.html"
+        },
+        "x-documentation-number": "2.17.6",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      }
+    },
+    "/tickets": {
+      "get": {
+        "operationId": "zentao_v1_get_tickets",
+        "summary": "获取工单列表",
+        "description": "获取工单列表。来源：https://www.zentao.net/book/api/1266.html",
+        "tags": [
+          "工单"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1266.html"
+        },
+        "x-documentation-number": "2.18.1",
+        "parameters": [
+          {
+            "name": "browseType",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "工单状态（all 所有 | wait 待处理 | doing 处理中 | done 待关闭 | finishedbyme 由我解决 | openedbyme 由我创建 | assignedtome 指派给我）"
+            }
+          },
+          {
+            "name": "param",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "模块ID， 默认为0"
+            }
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "排序，默认id_desc；排序字段+下划线+asc/desc"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "第几页，默认为1"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "每页工单数量，默认2 0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "post": {
+        "operationId": "zentao_v1_post_tickets",
+        "summary": "创建工单",
+        "description": "创建工单。来源：https://www.zentao.net/book/api/1269.html",
+        "tags": [
+          "工单"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1269.html"
+        },
+        "x-documentation-number": "2.18.4",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "product": {
+                    "type": "integer",
+                    "description": "所属产品"
+                  },
+                  "module": {
+                    "type": "integer",
+                    "description": "所属分类"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "标题"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "工单类型(code 程序报错 | data 数据错误 | stuck 流程卡断 | security 安全问题 | affair 事务)"
+                  }
+                },
+                "additionalProperties": true,
+                "required": [
+                  "product",
+                  "title"
+                ]
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    },
+    "/tickets/{id}": {
+      "get": {
+        "operationId": "zentao_v1_get_tickets_id",
+        "summary": "获取工单详情",
+        "description": "获取工单详情。来源：https://www.zentao.net/book/api/1267.html",
+        "tags": [
+          "工单"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1267.html"
+        },
+        "x-documentation-number": "2.18.2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": true
+      },
+      "put": {
+        "operationId": "zentao_v1_put_tickets_id",
+        "summary": "修改工单",
+        "description": "修改工单。来源：https://www.zentao.net/book/api/1268.html",
+        "tags": [
+          "工单"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1268.html"
+        },
+        "x-documentation-number": "2.18.3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "product": {
+                    "type": "integer",
+                    "description": "所属产品"
+                  },
+                  "module": {
+                    "type": "integer",
+                    "description": "所属分类"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "标题"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "工单类型(code 程序报错 | data 数据错误 | stuck 流程卡断 | security 安全问题 | affair 事务)"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "描述"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      },
+      "delete": {
+        "operationId": "zentao_v1_delete_tickets_id",
+        "summary": "删除工单",
+        "description": "删除工单。来源：https://www.zentao.net/book/api/1270.html",
+        "tags": [
+          "工单"
+        ],
+        "externalDocs": {
+          "url": "https://www.zentao.net/book/api/1270.html"
+        },
+        "x-documentation-number": "2.18.5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZenTao JSON response; shape varies by endpoint and version.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "x-readonly": false
+      }
+    }
+  }
+}

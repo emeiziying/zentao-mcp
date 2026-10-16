@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"net/http"
 	"time"
 
 	"github.com/merzzzl/openapi-mcp-server/internal/models"
@@ -35,6 +36,10 @@ func (c *Controller) RegisterAllTools(ctx context.Context, server *mcpsdk.Server
 		c.registerTool(ctx, server, td)
 	}
 
+	c.registerMonthlyTool(server, tools)
+	c.registerTaskHistoryTool(server, tools)
+	c.registerBugHistoryTool(server, tools)
+
 	c.logger.InfoContext(ctx, "tools registered")
 
 	return nil
@@ -51,6 +56,7 @@ func (c *Controller) registerTool(ctx context.Context, server *mcpsdk.Server, td
 		Name:        td.OperationID,
 		Description: td.Description,
 		InputSchema: td.InputSchema,
+		Annotations: &mcpsdk.ToolAnnotations{ReadOnlyHint: td.Method == http.MethodGet || td.Method == http.MethodHead},
 	}
 
 	if td.OutputSchema != nil {
@@ -111,7 +117,9 @@ func (c *Controller) toolHandler(td *models.ToolDefinition) func(context.Context
 			}
 		}
 
+		failed := responseFailed(status, body, len(td.OutputSchema) > 0)
 		res := &mcpsdk.CallToolResult{
+			IsError: failed,
 			Content: []mcpsdk.Content{
 				&mcpsdk.TextContent{Text: fmt.Sprintf("HTTP %d", status)},
 				&mcpsdk.TextContent{Text: text},
@@ -119,7 +127,7 @@ func (c *Controller) toolHandler(td *models.ToolDefinition) func(context.Context
 		}
 
 		var structuredOutput any
-		if len(td.OutputSchema) > 0 && status >= 200 && status < 300 && data != nil {
+		if len(td.OutputSchema) > 0 && !failed && data != nil {
 			structuredOutput = normalizeStructuredOutput(td.OutputSchema, data)
 		}
 

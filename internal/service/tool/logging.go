@@ -29,7 +29,7 @@ func redactInput(in map[string]any) map[string]any {
 			continue
 		}
 
-		redacted[key] = value
+		redacted[key] = redactNested(value)
 	}
 
 	return redacted
@@ -77,4 +77,19 @@ func isSensitiveKey(key string) bool {
 	_, ok := sensitiveKeys[strings.ToLower(key)]
 
 	return ok
+}
+
+func redactNested(value any) any {
+	switch v := value.(type) {
+	case map[string]any:
+		return redactInput(v)
+	case []any:
+		out := make([]any, len(v))
+		for i, item := range v {
+			out[i] = redactNested(item)
+		}
+		return out
+	default:
+		return value
+	}
 }

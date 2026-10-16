@@ -153,3 +153,7 @@ curl -X POST "${ZENTAO_DOMAIN}/api.php/v2/user/login" \
 MIT License
 
 本项目在 [openapi-mcp-server](https://github.com/merzzzl/openapi-mcp-server) 的基础上进行修改和扩展，原项目及本项目均依据 MIT 许可证发布。
+
+## Personal read-only aggregate queries
+
+ZenTao REST v1 schemas support authenticated [monthly worklogs](docs/monthly-worklogs.md) and [historical task/Bug queries](docs/history-queries.md). Monthly reports are disabled unless a server-owned endpoint is configured. Historical queries require explicit visible execution/product scope; identity, read-only operation checks and partial-evidence markers remain enforced.

@@ -10,6 +10,7 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
+	_ "time/tzdata" // Minimal runtime images do not contain the IANA timezone database.
 
 	"github.com/merzzzl/openapi-mcp-server/internal/clients"
 	mcpctrl "github.com/merzzzl/openapi-mcp-server/internal/controller/mcp"
@@ -87,6 +88,11 @@ func main() {
 
 		schemaSvc := schema.New(loader)
 		toolSvc := tool.New(proxy, sc.BaseURL)
+		if err := toolSvc.ConfigureMonthlyReport(sc.MonthlyReport); err != nil {
+			slog.ErrorContext(ctx, "invalid monthly report configuration")
+			exitCode = 1
+			return
+		}
 
 		allow, err := compileMatchRules(sc.Allow)
 		if err != nil {

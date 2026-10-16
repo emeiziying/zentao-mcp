@@ -77,7 +77,10 @@ def main():
             rpc('initialize',{'protocolVersion':'2025-06-18','capabilities':{},'clientInfo':{'name':'contract','version':'1'}})
             rpc('notifications/initialized',notify=True)
             tools=rpc('tools/list')['tools']
-            assert {t['name'] for t in tools}==set(operations),(len(tools),len(operations))
+            aggregates={'zentao_my_task_history','zentao_my_bug_history'}
+            assert {t['name'] for t in tools}==set(operations)|aggregates,(len(tools),len(operations))
+            assert all(t.get('annotations',{}).get('readOnlyHint') is True for t in tools if t['name'] in aggregates)
+            tools=[t for t in tools if t['name'] in operations]
             for tool in tools:
                 method,path,op=operations[tool['name']];args=example(tool['inputSchema'])
                 before=len(seen)

@@ -36,6 +36,10 @@ func (c *Controller) RegisterAllTools(ctx context.Context, server *mcpsdk.Server
 		c.registerTool(ctx, server, td)
 	}
 
+	c.registerMonthlyTool(server, tools)
+	c.registerTaskHistoryTool(server, tools)
+	c.registerBugHistoryTool(server, tools)
+
 	c.logger.InfoContext(ctx, "tools registered")
 
 	return nil

@@ -13,12 +13,13 @@ import (
 
 // Service executes API operations through a proxy.
 type Service struct {
-	tracer  trace.Tracer
-	logger  *slog.Logger
-	metrics *measure.Metrics
-	proxy   repository.Proxy
-	baseURL string
-	rePath  *regexp.Regexp
+	tracer        trace.Tracer
+	logger        *slog.Logger
+	metrics       *measure.Metrics
+	proxy         repository.Proxy
+	baseURL       string
+	rePath        *regexp.Regexp
+	monthlyReport MonthlyReportConfig
 }
 
 // New creates a tool Service with the given proxy and base URL.

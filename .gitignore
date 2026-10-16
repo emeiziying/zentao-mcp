@@ -19,3 +19,6 @@ config.yaml
 
 # Test
 coverage.out
+
+# Local REST v1 configuration
+config.v1.yaml

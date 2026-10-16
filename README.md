@@ -1,5 +1,7 @@
 # ZenTao MCP Server
 
+本 fork 新增 [REST v1 只读兼容模式](docs/rest-v1.md)，保留上游 v2 模式。旧版禅道请使用 `config.v1.example.yaml`。
+
 基于 OpenAPI 规范自动生成 MCP (Model Context Protocol) 工具服务。
 
 ## 一：简介

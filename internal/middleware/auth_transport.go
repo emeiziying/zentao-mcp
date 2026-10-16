@@ -1,6 +1,9 @@
 package middleware
 
-import "net/http"
+import (
+	"net/http"
+	"time"
+)
 
 type authTransport struct {
 	base http.RoundTripper
@@ -32,10 +35,15 @@ func WithBearerAuth(c *http.Client) *http.Client {
 		base = http.DefaultTransport
 	}
 
+	timeout := c.Timeout
+	if timeout == 0 {
+		timeout = 30 * time.Second
+	}
 	return &http.Client{
-		Transport:     &authTransport{base: base},
-		CheckRedirect: c.CheckRedirect,
+		Transport: &authTransport{base: base},
+		// Do not forward credentials or replay mutations across redirects.
+		CheckRedirect: func(req *http.Request, via []*http.Request) error { return http.ErrUseLastResponse },
 		Jar:           c.Jar,
-		Timeout:       c.Timeout,
+		Timeout:       timeout,
 	}
 }

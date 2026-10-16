@@ -3,6 +3,7 @@ package mcp
 import (
 	"bytes"
 	"encoding/json"
+	"strings"
 )
 
 // JSON API endpoints may return an empty HTML page with HTTP 200 when an API
@@ -16,5 +17,35 @@ func responseFailed(status int, body []byte, expectsJSON bool) bool {
 		return false
 	}
 	body = bytes.TrimSpace(body)
-	return len(body) == 0 || !json.Valid(body) || bytes.Equal(body, []byte("null"))
+	if len(body) == 0 || !json.Valid(body) || bytes.Equal(body, []byte("null")) {
+		return true
+	}
+	var envelope map[string]any
+	if json.Unmarshal(body, &envelope) != nil {
+		return false
+	}
+	for _, key := range []string{"status", "result"} {
+		if value, ok := envelope[key].(string); ok {
+			switch strings.ToLower(value) {
+			case "fail", "failed", "error":
+				return true
+			}
+		}
+	}
+	if value, ok := envelope["result"].(bool); ok && !value {
+		return true
+	}
+	if value, ok := envelope["error"]; ok && value != nil {
+		switch v := value.(type) {
+		case string:
+			return v != ""
+		case bool:
+			return v
+		case float64:
+			return v != 0
+		default:
+			return true
+		}
+	}
+	return false
 }

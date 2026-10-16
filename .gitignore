@@ -22,3 +22,8 @@ coverage.out
 
 # Local REST v1 configuration
 config.v1.yaml
+
+# Python helper caches
+__pycache__/
+*.pyc
+config.v1.full.yaml

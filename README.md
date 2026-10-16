@@ -1,6 +1,6 @@
 # ZenTao MCP Server
 
-本 fork 新增 [REST v1 只读兼容模式](docs/rest-v1.md)，保留上游 v2 模式。旧版禅道请使用 `config.v1.example.yaml`。
+本 fork 提供 [REST v1 完整接口兼容](docs/rest-v1.md)，覆盖官方手册 97 个接口，保留上游 v2 模式。只读配置使用 `config.v1.example.yaml`；完整业务操作使用 `config.v1.full.example.yaml`。登录由独立本地工具处理。
 
 基于 OpenAPI 规范自动生成 MCP (Model Context Protocol) 工具服务。
 

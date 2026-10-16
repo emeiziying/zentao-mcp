@@ -1,4 +1,4 @@
-# Run from repository root. Supply each user's token in the MCP `Token` header.
+# All REST v1 reads. Use config.v1.full.example.yaml to enable business writes.
 port: '127.0.0.1:9090'
 enable_toon: false
 telemetry:
@@ -9,5 +9,5 @@ servers:
     base_url: https://zentao.example.com/zentao/api.php/v1
     allow:
       - methods: [GET]
-        regex: '^/(user|products|tasks/[^/]+)$'
+        regex: '.*'
     block: []

@@ -49,7 +49,8 @@ rpc('initialize', {'protocolVersion': '2025-06-18', 'capabilities': {},
 rpc('notifications/initialized', notification=True)
 tools = rpc('tools/list')['tools']
 expected = {'zentao_current_user', 'zentao_products', 'zentao_task_detail'}
-assert {tool['name'] for tool in tools} == expected
+assert expected <= {tool['name'] for tool in tools}
+assert len(tools) == 38
 assert all(tool.get('annotations', {}).get('readOnlyHint') for tool in tools)
 print('readonly tool list: passed')
 check('zentao_current_user', {'fields': 'task', 'limit': 1}, 'profile')
